@@ -20,5 +20,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val bmi = findViewById<androidx.cardview.widget.CardView>(R.id.bmipage)
+        bmi.setOnClickListener{
+            val intent = Intent(this, BMI::class.java)
+            startActivity(intent)
+        }
+
     }
 }
