@@ -26,5 +26,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val fooddiary = findViewById<androidx.cardview.widget.CardView>(R.id.fooddiary)
+        fooddiary.setOnClickListener{
+            val intent = Intent(this, FoodDiary::class.java)
+            startActivity(intent)
+        }
+
     }
 }

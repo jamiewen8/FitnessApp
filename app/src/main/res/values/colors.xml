@@ -9,5 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#2d2d2d</color>  //added grey for the dashboard grids
     <color name="blue">#02CDFA</color>
+    <color name="red">#FA0202</color>
+    <color name="light_blue">#00BCD4</color>
+    <color name="light_blue_darker">#03A9F4</color>
 
 </resources>
