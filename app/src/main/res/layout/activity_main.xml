@@ -215,29 +215,50 @@
                 android:layout_margin="10dp">
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    >
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/settings"
-                        android:layout_marginTop="12dp"/>
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/progress_pedometer"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        app:cpb_background_progressbar_color="#F2F2F2"
+                        app:cpb_background_progressbar_width="20dp"
+                        app:cpb_progress_max="8000"
+                        app:cpb_progressbar_color="#F44336"
+                        app:cpb_progressbar_width="15dp"
+                        app:cpb_round_border="true" />
+
+                    <TextView
+                        android:id="@+id/stepstaken"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="0"
+                        android:textColor="@color/red"
+                        android:textSize="30sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
-                        android:textSize="18sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="20dp"
-                        />
+                        android:id="@+id/maxsteps"
+                        android:layout_below="@id/stepstaken"
+                        android:layout_centerInParent="true"
+                        android:text="/8000"
+                        android:textColor="@color/red"
+                        android:textSize="14sp"/>
 
 
-                </LinearLayout>
+
+                </RelativeLayout>
+
+
+
+
+
 
             </androidx.cardview.widget.CardView>
 
