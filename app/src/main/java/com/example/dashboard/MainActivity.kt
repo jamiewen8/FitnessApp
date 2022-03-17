@@ -1,6 +1,8 @@
 package com.example.dashboard
 
 import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -17,19 +19,26 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private var sensorManager:SensorManager? = null
-
     var running = false
-
     private var totalSteps = 0f
-
     private var previousTotalSteps = 0f
-
     private val requestcodeforsteps = 100
+    //the above are for the pedometer. Calculating the total steps, previous steps and getting the request code for the pedometer to work
+    // making sure that running is off and that the sensor is checked
+    //api >29 must include the permissions
+
+    private val CHANNEL_ID = "channel_id_example_01"
+    private val notificationId = 101
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +53,18 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         loadData()
         resetSteps()
+
+        //load data and reset steps for the pedometer
+
+
+        createNotificationChannel()
+        //notification for the pedometer
+
+
+
+
+
+
 
         val scanning = findViewById<CardView>(R.id.scan)
         scanning.setOnClickListener{
@@ -98,6 +119,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             progresscircle.apply {
                 setProgressWithAnimation(currentSteps.toFloat())
+            }
+
+            if (currentSteps == 10){
+                sendNotification()
+                //sends the notification when it hits a certain amount of steps
             }
 
         }
@@ -175,4 +201,34 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
         }
     }
+
+    private fun createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //make sure to send notification for devices above oreo
+            val name = "Notification title"
+            val descriptionText = "Notification Description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID,name,importance).apply{
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun sendNotification(){
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle("You Hit Your Goal!!")
+            .setContentText("For reaching 8000 steps")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(this,)){
+            notify(notificationId, builder.build())
+        }
+    }
+
+
+
+
 }
