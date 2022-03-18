@@ -51,8 +51,10 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/scan"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:foregroundTint="#000000"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/scan" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,8 +88,9 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/star"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/reward" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -120,8 +123,9 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/calorie"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/kcal" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -155,8 +159,9 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/bmi"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bmi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -190,8 +195,9 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/diary"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/diary" />
 
                     <TextView
                         android:layout_width="wrap_content"

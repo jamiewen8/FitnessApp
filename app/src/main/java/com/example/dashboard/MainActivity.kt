@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        supportActionBar?.hide() //removing the action bar above to stop showing the name of the app
         if (isPermissionGranted()) {
             requestPermission()
         }
