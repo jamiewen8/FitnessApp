@@ -20,6 +20,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.widget.SeekBar
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -39,12 +40,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
 
+    //water intake animations
+    private var water_intake :WaterIntake? = null
+    private var seek_bar : SeekBar? = null
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initWaterIntake()
 
         if (isPermissionGranted()) {
             requestPermission()
@@ -248,6 +254,21 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
+
+    private fun initWaterIntake() {
+        water_intake = findViewById(R.id.water_animation)
+        seek_bar = findViewById(R.id.seek_bar)
+        seek_bar!!.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                water_intake!!.setProgress(progress.toFloat())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+
+        })
+    }
 
 
 
