@@ -5,6 +5,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.alpha
 import kotlin.math.pow
 
 class BMI : AppCompatActivity() {
@@ -24,12 +25,16 @@ class BMI : AppCompatActivity() {
 
         imageBoy.setOnClickListener {
             imageBoy.setImageResource(R.drawable.male)
-            imageGirl.setImageResource(R.drawable.femaleblur)
+            imageBoy.alpha = 1f;
+            imageGirl.setImageResource(R.drawable.female)
+            imageGirl.alpha = 0.5f;
         }
 
         imageGirl.setOnClickListener {
-            imageBoy.setImageResource(R.drawable.maleblur)
+            imageBoy.setImageResource(R.drawable.male)
+            imageBoy.alpha = 0.5f;
             imageGirl.setImageResource(R.drawable.female)
+            imageGirl.alpha = 1f;
         }
 
         calculateButton.setOnClickListener {
