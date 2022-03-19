@@ -111,7 +111,8 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="5dp"
                 app:cardBackgroundColor="@color/grey"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:id="@+id/fooddiary">
 
 
                 <LinearLayout
@@ -123,14 +124,14 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="12dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/kcal" />
+                        android:src="@drawable/diary"
+                        android:layout_marginTop="12dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calorie Counter"
+                        android:text="Food Diary"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:layout_marginTop="20dp"
@@ -183,21 +184,26 @@
                 app:cardElevation="5dp"
                 app:cardBackgroundColor="@color/grey"
                 android:layout_margin="10dp"
-                android:id="@+id/fooddiary">
+                android:id="@+id/waterintake">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    <com.example.dashboard.WaterIntake
+                        android:id="@+id/water_animation"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <SeekBar
+                        android:id="@+id/seek_bar"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="12dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/diary" />
+                        android:src="@drawable/diary"
+                        android:layout_marginTop="12dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
