@@ -3,7 +3,10 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
+
+
 
 android {
     compileSdk 31
@@ -90,4 +93,5 @@ dependencies {
 
     //Circle Indicator (ViewPager2)
     implementation 'me.relex:circleindicator:2.1.4'
+
 }

@@ -60,8 +60,8 @@ class IntroActivity : AppCompatActivity() {
 
         introView = listOf(
             IntroView("Welcome to the Calorie Tracker!", R.drawable.ic_tea),
-            IntroView("This app is designed to keep track of your habits, " +
-                    "whether it's a good one, or a bad one.", R.drawable.ic_tea),
+            IntroView("This app is designed to keep track of your calorie intake, " +
+                    "this will help you improve", R.drawable.ic_tea),
             IntroView("Good luck! Tap on the button below to get started with using the app!", R.drawable.ic_tea),
         )
     }

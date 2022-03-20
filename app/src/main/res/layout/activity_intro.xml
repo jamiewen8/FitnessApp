@@ -33,7 +33,7 @@
         android:background="@drawable/round_button"
         android:backgroundTint="#FF5722"
         android:padding="10dp"
-        android:text="Start making new habits!"
+        android:text="Start using this app!"
         android:textColor="@android:color/white"
         android:visibility="gone" />
 
