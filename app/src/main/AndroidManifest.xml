@@ -29,6 +29,7 @@
         <activity android:name=".SecondActivity"></activity>
         <activity android:name=".BMI"></activity>
         <activity android:name=".FoodDiary"></activity>
+        <activity android:name=".RewardPage"></activity>
     </application>
 
 </manifest>

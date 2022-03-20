@@ -18,7 +18,7 @@ class WaterIntake @JvmOverloads constructor(
     private var circlePaint: Paint? = null
     private var textPaint: Paint? = null
     private var screenWidth = 0
-    private var screenHeignt = 0
+    private var screenHeight = 0
     private val amplitude = 100
     private var path: Path? = null
     private var progress = 0f
@@ -58,7 +58,7 @@ class WaterIntake @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         screenWidth = w
-        screenHeignt = h
+        screenHeight = h
         startPoint.x = -screenWidth
     }
 
@@ -76,7 +76,7 @@ class WaterIntake @JvmOverloads constructor(
     }
 
     private fun drawText(canvas: Canvas) {
-        val targetRect = Rect(0, -screenHeignt, screenWidth, 0)
+        val targetRect = Rect(0, -screenHeight, screenWidth, 0)
         val fontMetrics = textPaint!!.fontMetricsInt
         val baseline = (targetRect.bottom + targetRect.top - fontMetrics.bottom - fontMetrics.top) / 2
         textPaint!!.textAlign = Paint.Align.CENTER
@@ -84,9 +84,9 @@ class WaterIntake @JvmOverloads constructor(
     }
 
     private fun drawWave(canvas: Canvas) {
-        val height = (progress / 100 * screenHeignt).toInt()
+        val height = (progress / 100 * screenHeight).toInt()
         startPoint.y = -height
-        canvas.translate(0f, screenHeignt.toFloat())
+        canvas.translate(0f, screenHeight.toFloat())
         path = Path()
         wavePaint!!.style = Paint.Style.FILL
         wavePaint!!.color = Color.parseColor("#248eb5")
@@ -111,8 +111,8 @@ class WaterIntake @JvmOverloads constructor(
                 )
             }
         }
-        path!!.lineTo(screenWidth.toFloat(), (screenHeignt / 2).toFloat())
-        path!!.lineTo(-screenWidth.toFloat(), (screenHeignt / 2).toFloat())
+        path!!.lineTo(screenWidth.toFloat(), (screenHeight / 2).toFloat())
+        path!!.lineTo(-screenWidth.toFloat(), (screenHeight / 2).toFloat())
         path!!.lineTo(-screenWidth.toFloat(), 0f)
         path!!.close()
         canvas.drawPath(path!!, wavePaint!!)
@@ -125,9 +125,9 @@ class WaterIntake @JvmOverloads constructor(
 
     private fun drawCircle(canvas: Canvas) {
         canvas.drawCircle(
-            (screenHeignt / 2).toFloat(),
-            (screenHeignt / 2).toFloat(),
-            (screenHeignt / 2).toFloat(),
+            (screenHeight / 2).toFloat(),
+            (screenHeight / 2).toFloat(),
+            (screenHeight / 2).toFloat(),
             circlePaint!!
         )
     }
@@ -136,8 +136,8 @@ class WaterIntake @JvmOverloads constructor(
         val circlePath = Path()
         circlePath.addCircle(
             (screenWidth / 2).toFloat(),
-            (screenHeignt / 2).toFloat(),
-            (screenHeignt / 2).toFloat(),
+            (screenHeight / 2).toFloat(),
+            (screenHeight / 2).toFloat(),
             Path.Direction.CW
         )
         canvas.clipPath(circlePath)

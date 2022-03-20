@@ -74,7 +74,8 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="5dp"
                 app:cardBackgroundColor="@color/grey"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:id="@+id/rewardspage">
 
 
                 <LinearLayout

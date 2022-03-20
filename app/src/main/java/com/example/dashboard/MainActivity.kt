@@ -93,6 +93,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             startActivity(intent)
         }
 
+        val rewardspage = findViewById<CardView>(R.id.rewardspage)
+        rewardspage.setOnClickListener{
+            val intent = Intent(this, RewardPage::class.java)
+            startActivity(intent)
+        }
+
     }
 
 
