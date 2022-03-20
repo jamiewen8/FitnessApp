@@ -25,6 +25,13 @@ class Food {
 
     constructor() {}
 
+    constructor(barcode: Int, foodName: String, proteinContent: Int, fatContent: Int, carbsContent: Int, calorieContent: Int) {
+    this.foodName = foodName
+    this.proteinContent = proteinContent
+    this.fatContent = fatContent
+    this.carbsContent = carbsContent
+    this.calorieContent = calorieContent
+    }
 
 
 }

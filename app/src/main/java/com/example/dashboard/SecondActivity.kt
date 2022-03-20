@@ -47,6 +47,7 @@ class SecondActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
+
             }
         }
 
