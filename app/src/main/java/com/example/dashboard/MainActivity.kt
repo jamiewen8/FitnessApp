@@ -25,6 +25,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.dashboard.ui.fragments.foodlist.FoodList
+import com.example.dashboard.ui.introscreen.IntroActivity
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -41,8 +46,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private val notificationId = 101
 
     //water intake animations
-    private var water_intake :WaterIntake? = null
+    private var water_intake : WaterIntake? = null
     private var seek_bar : SeekBar? = null
+
+    //to see if this is the user's first time using the app if it is then it will show the intro screen
+    private var userFirstTime = true
 
 
 
@@ -50,6 +58,24 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide() //removing the action bar above to stop showing the name of the app
+
+        loadSPData()
+
+        if (userFirstTime) {
+            userFirstTime = false
+            saveSPData()
+
+            val i = Intent(this, IntroActivity::class.java)
+            startActivity(i)
+            finish()
+        }
+
+        //setupActionBarWithNavController(findNavController(R.id.navHostFragment))
+
+
+
+
+
 
         initWaterIntake()
 
@@ -74,7 +100,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 
 
-
         val scanning = findViewById<CardView>(R.id.scan)
         scanning.setOnClickListener{
             val intent = Intent(this, SecondActivity::class.java)
@@ -93,12 +118,37 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             startActivity(intent)
         }
 
+
+        /*val fooddiary = findViewById<CardView>(R.id.fooddiary)
+        fooddiary.setOnClickListener{
+            setupActionBarWithNavController(findNavController(R.id.navHostFragment))
+        }*/
+        /*fooddiary.setOnClickListener{
+
+            val myFragment = FoodList()
+            val fragment : Fragment? =
+
+                supportFragmentManager.findFragmentByTag(FoodList::class.java.simpleName)
+
+            if(fragment !is FoodList){
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fooddiary, myFragment, FoodList::class.java.simpleName)
+                    .commit()
+
+            }*/
+
+
         val rewardspage = findViewById<CardView>(R.id.rewardspage)
         rewardspage.setOnClickListener{
             val intent = Intent(this, RewardPage::class.java)
             startActivity(intent)
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.navHostFragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
 
@@ -166,13 +216,28 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val editor = sharedPreferences.edit()
         editor.putFloat("key1", previousTotalSteps)
         editor.apply()
+
     }
+    private fun saveSPData(){
+        val sharedPreferences = getSharedPreferences("SHARED_PREFS", MODE_PRIVATE)
+        sharedPreferences.edit().apply {
+            putBoolean("BOOLEAN_FIRST_TIME", userFirstTime)
+            apply()
+        }
+    }
+
 
     private fun loadData(){
         val sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE)
         val savedNumber = sharedPreferences.getFloat("key1", 0f)
         Log.d("MainActivity", "$savedNumber")
         previousTotalSteps = savedNumber
+    }
+
+    private fun loadSPData(){
+        val sharedPreferences = getSharedPreferences("SHARED_PREFS", MODE_PRIVATE)
+
+        userFirstTime = sharedPreferences.getBoolean("BOOLEAN_FIRST_TIME", true)
     }
 
 
@@ -241,8 +306,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         //bitmap converter
 
-        val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.well_done)
-        val bitmapLargeIcon = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.running)
+        val bitmap = BitmapFactory.decodeResource(applicationContext.resources,
+            R.drawable.well_done
+        )
+        val bitmapLargeIcon = BitmapFactory.decodeResource(applicationContext.resources,
+            R.drawable.running
+        )
 
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)

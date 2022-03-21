@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/foodList">
+
+    <fragment
+        android:id="@+id/choose"
+        android:name="com.example.dashboard.ui.fragments.choose.Choose"
+        android:label="fragment_choose"
+        tools:layout="@layout/fragment_choose" >
+        <action
+            android:id="@+id/action_choose_to_createFoodItem"
+            app:destination="@id/createFoodItem" />
+        <action
+            android:id="@+id/action_choose_to_scanner"
+            app:destination="@id/scanner" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodList"
+        android:name="com.example.dashboard.ui.fragments.foodlist.FoodList"
+        android:label="fragment_food_list"
+        tools:layout="@layout/fragment_food_list" >
+        <action
+            android:id="@+id/action_foodList_to_choose"
+            app:destination="@id/choose" />
+        <action
+            android:id="@+id/action_foodList_to_updateChoose"
+            app:destination="@id/updateChoose" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFoodItem"
+        android:name="com.example.dashboard.ui.fragments.createfood.CreateFoodItem"
+        android:label="fragment_create_food_item"
+        tools:layout="@layout/fragment_create_food_item" >
+        <action
+            android:id="@+id/action_createFoodItem_to_measurement"
+            app:destination="@id/measurement" />
+    </fragment>
+    <fragment
+        android:id="@+id/measurement"
+        android:name="com.example.dashboard.ui.fragments.foodmeasurement.Measurement"
+        android:label="food_measurement"
+        tools:layout="@layout/food_measurement" >
+        <action
+            android:id="@+id/action_measurement_to_foodList"
+            app:destination="@id/foodList" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateChoose"
+        android:name="com.example.dashboard.ui.fragments.updatechoose.UpdateChoose"
+        android:label="fragment_update_choose"
+        tools:layout="@layout/fragment_update_choose" >
+        <action
+            android:id="@+id/action_updateChoose_to_updateFoodItem"
+            app:destination="@id/updateFoodItem" />
+        <action
+            android:id="@+id/action_updateChoose_to_updateScanner"
+            app:destination="@id/updateScanner" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFoodItem"
+        android:name="com.example.dashboard.ui.fragments.updatefood.UpdateFoodItem"
+        android:label="fragment_updatefooditem"
+        tools:layout="@layout/fragment_updatefooditem" >
+        <action
+            android:id="@+id/action_updateFoodItem_to_updateMeasurement"
+            app:destination="@id/updateMeasurement" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateScanner"
+        android:name="com.example.dashboard.ui.fragments.updatescanner.UpdateScanner"
+        android:label="UpdateScanner" >
+        <action
+            android:id="@+id/action_updateScanner_to_updateMeasurement"
+            app:destination="@id/updateMeasurement" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateMeasurement"
+        android:name="com.example.dashboard.ui.fragments.updatemeasurement.UpdateMeasurement"
+        android:label="fragment_update_measurement"
+        tools:layout="@layout/fragment_update_measurement" >
+        <action
+            android:id="@+id/action_updateMeasurement_to_foodList2"
+            app:destination="@id/foodList" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanner"
+        android:name="com.example.dashboard.ui.fragments.scanner.Scanner"
+        android:label="Scanner" >
+        <action
+            android:id="@+id/action_scanner_to_measurement"
+            app:destination="@id/measurement" />
+    </fragment>
+</navigation>

@@ -30,6 +30,8 @@
         <activity android:name=".BMI"></activity>
         <activity android:name=".FoodDiary"></activity>
         <activity android:name=".RewardPage"></activity>
+        <activity android:name=".ui.introscreen.IntroActivity"></activity>
+
     </application>
 
 </manifest>

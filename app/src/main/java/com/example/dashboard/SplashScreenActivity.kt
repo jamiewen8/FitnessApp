@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val screen = findViewById<ImageView>(R.id.fitify)
         screen.alpha = 0f
         screen.animate().setDuration(1500).alpha(1f).withEndAction {
-            val switch = Intent(this,MainActivity::class.java)
+            val switch = Intent(this, MainActivity::class.java)
             startActivity(switch)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()

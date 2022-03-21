@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -110,7 +111,10 @@
                 app:cardElevation="5dp"
                 app:cardBackgroundColor="@color/grey"
                 android:layout_margin="10dp"
-                android:id="@+id/fooddiary">
+                android:id="@+id/fooddiary"
+                app:navGraph="@navigation/main_nav"
+                app:defaultNavHost="true"
+                >
 
 
                 <LinearLayout
