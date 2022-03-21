@@ -28,6 +28,7 @@ class FoodRepository(application: Application) {
     fun insertFood(newfood: Food) {
         coroutineScope.launch(Dispatchers.IO) {
             asyncInsert(newfood)
+
         }
     }
 

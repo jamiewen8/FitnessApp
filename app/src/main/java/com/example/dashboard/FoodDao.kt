@@ -11,6 +11,7 @@ interface FoodDao {
     @Insert
     fun insertFood(food: Food)
 
+
     @Query("SELECT * FROM foods WHERE foodName = :name")
     fun findFood(name: String): List<Food>
 

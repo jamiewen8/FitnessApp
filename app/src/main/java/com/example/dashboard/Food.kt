@@ -3,6 +3,7 @@ package com.example.dashboard
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 
@@ -14,6 +15,7 @@ class Food {
     @NonNull
     @ColumnInfo(name = "Barcode")
     var id: Int = 0
+
 
     @ColumnInfo(name = "foodName")
     var foodName: String? = null
