@@ -17,8 +17,8 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
 
 
     init {
-        val habitDao= FoodDatabase.getDatabase(application).foodDao()
-        repository = FoodRepository(habitDao)
+        val foodDao= FoodDatabase.getDatabase(application).foodDao()
+        repository = FoodRepository(foodDao)
 
         getAllFoods = repository.getAllFoods
     }
