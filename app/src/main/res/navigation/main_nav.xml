@@ -35,16 +35,7 @@
         android:label="fragment_create_food_item"
         tools:layout="@layout/fragment_create_food_item" >
         <action
-            android:id="@+id/action_createFoodItem_to_measurement"
-            app:destination="@id/measurement" />
-    </fragment>
-    <fragment
-        android:id="@+id/measurement"
-        android:name="com.example.dashboard.ui.fragments.foodmeasurement.Measurement"
-        android:label="food_measurement"
-        tools:layout="@layout/food_measurement" >
-        <action
-            android:id="@+id/action_measurement_to_foodList"
+            android:id="@+id/action_createFoodItem_to_foodList"
             app:destination="@id/foodList" />
     </fragment>
     <fragment
@@ -65,32 +56,15 @@
         android:label="fragment_updatefooditem"
         tools:layout="@layout/fragment_updatefooditem" >
         <action
-            android:id="@+id/action_updateFoodItem_to_updateMeasurement"
-            app:destination="@id/updateMeasurement" />
+            android:id="@+id/action_updateFoodItem_to_foodList"
+            app:destination="@id/foodList" />
     </fragment>
     <fragment
         android:id="@+id/updateScanner"
         android:name="com.example.dashboard.ui.fragments.updatescanner.UpdateScanner"
-        android:label="UpdateScanner" >
-        <action
-            android:id="@+id/action_updateScanner_to_updateMeasurement"
-            app:destination="@id/updateMeasurement" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateMeasurement"
-        android:name="com.example.dashboard.ui.fragments.updatemeasurement.UpdateMeasurement"
-        android:label="fragment_update_measurement"
-        tools:layout="@layout/fragment_update_measurement" >
-        <action
-            android:id="@+id/action_updateMeasurement_to_foodList2"
-            app:destination="@id/foodList" />
-    </fragment>
+        android:label="UpdateScanner" />
     <fragment
         android:id="@+id/scanner"
         android:name="com.example.dashboard.ui.fragments.scanner.Scanner"
-        android:label="Scanner" >
-        <action
-            android:id="@+id/action_scanner_to_measurement"
-            app:destination="@id/measurement" />
-    </fragment>
+        android:label="Scanner" />
 </navigation>
