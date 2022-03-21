@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/foodList2">
+    app:startDestination="@id/foodList">
 
     <fragment
         android:id="@+id/choose"
@@ -18,15 +18,15 @@
             app:destination="@id/scanner" />
     </fragment>
     <fragment
-        android:id="@+id/foodList2"
+        android:id="@+id/foodList"
         android:name="com.example.dashboard.ui.fragments.foodlist.FoodList"
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_food_list" >
         <action
-            android:id="@+id/action_foodList2_to_choose3"
+            android:id="@+id/action_foodList_to_choose"
             app:destination="@id/choose" />
         <action
-            android:id="@+id/action_foodList2_to_updateChoose"
+            android:id="@+id/action_foodList_to_updateChoose"
             app:destination="@id/updateChoose" />
     </fragment>
     <fragment
@@ -45,7 +45,7 @@
         tools:layout="@layout/food_measurement" >
         <action
             android:id="@+id/action_measurement_to_foodList"
-            app:destination="@id/foodList2" />
+            app:destination="@id/foodList" />
     </fragment>
     <fragment
         android:id="@+id/updateChoose"
@@ -83,7 +83,7 @@
         tools:layout="@layout/fragment_update_measurement" >
         <action
             android:id="@+id/action_updateMeasurement_to_foodList2"
-            app:destination="@id/foodList2" />
+            app:destination="@id/foodList" />
     </fragment>
     <fragment
         android:id="@+id/scanner"

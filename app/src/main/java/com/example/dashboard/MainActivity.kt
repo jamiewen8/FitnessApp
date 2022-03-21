@@ -25,8 +25,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.dashboard.ui.fragments.foodlist.FoodList
 import com.example.dashboard.ui.introscreen.IntroActivity
 
 
@@ -115,6 +117,26 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             val intent = Intent(this, FoodDiary::class.java)
             startActivity(intent)
         }
+
+
+        /*val fooddiary = findViewById<CardView>(R.id.fooddiary)
+        fooddiary.setOnClickListener{
+            setupActionBarWithNavController(findNavController(R.id.navHostFragment))
+        }*/
+        /*fooddiary.setOnClickListener{
+
+            val myFragment = FoodList()
+            val fragment : Fragment? =
+
+                supportFragmentManager.findFragmentByTag(FoodList::class.java.simpleName)
+
+            if(fragment !is FoodList){
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fooddiary, myFragment, FoodList::class.java.simpleName)
+                    .commit()
+
+            }*/
+
 
         val rewardspage = findViewById<CardView>(R.id.rewardspage)
         rewardspage.setOnClickListener{
