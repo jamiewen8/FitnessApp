@@ -31,6 +31,7 @@ class SecondActivity : AppCompatActivity() {
             startScanning()
         }
     }
+    //todo make sure this links with the db with the content of the barcode number
 
     private fun startScanning() {
         val scannerView: CodeScannerView = findViewById(R.id.scanner_view)

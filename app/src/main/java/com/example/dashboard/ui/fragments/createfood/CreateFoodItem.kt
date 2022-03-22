@@ -46,6 +46,8 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
     }
 
+    //todo get rid of the measurement thing
+
     private fun addFoodToDB() {
 
 
