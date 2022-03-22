@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dashboard">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".ui.activities.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.Splash">
             <intent-filter>
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
         </activity>
-        <activity android:name=".SecondActivity"></activity>
-        <activity android:name=".BMI"></activity>
-        <activity android:name=".FoodDiary"></activity>
-        <activity android:name=".RewardPage"></activity>
+        <activity android:name=".ui.activities.SecondActivity"></activity>
+        <activity android:name=".ui.activities.BMI"></activity>
+        <activity android:name=".ui.activities.FoodDiary"></activity>
+        <activity android:name=".ui.activities.RewardPage"></activity>
         <activity android:name=".ui.introscreen.IntroActivity"></activity>
 
     </application>

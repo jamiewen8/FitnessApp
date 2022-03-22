@@ -7,7 +7,7 @@ import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dashboard.R
 import com.example.dashboard.data.models.IntroView
-import com.example.dashboard.MainActivity
+import com.example.dashboard.ui.activities.MainActivity
 import com.example.dashboard.ui.introscreen.adapters.ViewPagerIntroAdapter
 import kotlinx.android.synthetic.main.activity_intro.*
 
@@ -15,9 +15,13 @@ class IntroActivity : AppCompatActivity() {
 
     lateinit var introView: List<IntroView>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
+
+
+
 
         addToIntroView()
 

@@ -23,7 +23,7 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
                 Log.d("FoodsListAdapter", "Item clicked at: $position")
 
                 val action =
-                    FoodListDirections.actionFoodListToChoose()
+                    FoodListDirections.actionFoodListToCreateFoodItem()
                 itemView.findNavController().navigate(action)
             }
         }

@@ -6,28 +6,16 @@
     app:startDestination="@id/foodList">
 
     <fragment
-        android:id="@+id/choose"
-        android:name="com.example.dashboard.ui.fragments.choose.Choose"
-        android:label="fragment_choose"
-        tools:layout="@layout/fragment_choose" >
-        <action
-            android:id="@+id/action_choose_to_createFoodItem"
-            app:destination="@id/createFoodItem" />
-        <action
-            android:id="@+id/action_choose_to_scanner"
-            app:destination="@id/scanner" />
-    </fragment>
-    <fragment
         android:id="@+id/foodList"
         android:name="com.example.dashboard.ui.fragments.foodlist.FoodList"
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_food_list" >
         <action
-            android:id="@+id/action_foodList_to_choose"
-            app:destination="@id/choose" />
+            android:id="@+id/action_foodList_to_updateFoodItem"
+            app:destination="@id/updateFoodItem" />
         <action
-            android:id="@+id/action_foodList_to_updateChoose"
-            app:destination="@id/updateChoose" />
+            android:id="@+id/action_foodList_to_createFoodItem"
+            app:destination="@id/createFoodItem" />
     </fragment>
     <fragment
         android:id="@+id/createFoodItem"
@@ -39,18 +27,6 @@
             app:destination="@id/foodList" />
     </fragment>
     <fragment
-        android:id="@+id/updateChoose"
-        android:name="com.example.dashboard.ui.fragments.updatechoose.UpdateChoose"
-        android:label="fragment_update_choose"
-        tools:layout="@layout/fragment_update_choose" >
-        <action
-            android:id="@+id/action_updateChoose_to_updateFoodItem"
-            app:destination="@id/updateFoodItem" />
-        <action
-            android:id="@+id/action_updateChoose_to_updateScanner"
-            app:destination="@id/updateScanner" />
-    </fragment>
-    <fragment
         android:id="@+id/updateFoodItem"
         android:name="com.example.dashboard.ui.fragments.updatefood.UpdateFoodItem"
         android:label="fragment_updatefooditem"
@@ -59,12 +35,4 @@
             android:id="@+id/action_updateFoodItem_to_foodList"
             app:destination="@id/foodList" />
     </fragment>
-    <fragment
-        android:id="@+id/updateScanner"
-        android:name="com.example.dashboard.ui.fragments.updatescanner.UpdateScanner"
-        android:label="UpdateScanner" />
-    <fragment
-        android:id="@+id/scanner"
-        android:name="com.example.dashboard.ui.fragments.scanner.Scanner"
-        android:label="Scanner" />
 </navigation>

@@ -34,7 +34,7 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
         viewModels()
 
         fab_add.setOnClickListener {
-            findNavController().navigate(R.id.action_foodList_to_choose)
+            findNavController().navigate(R.id.action_foodList_to_createFoodItem)
         }
 
         //Show the options menu in this fragment
