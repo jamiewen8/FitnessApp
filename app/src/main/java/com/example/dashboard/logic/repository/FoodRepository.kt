@@ -1,27 +1,66 @@
 package com.example.dashboard.logic.repository
 
+import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.dashboard.data.database.FoodDatabase
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.logic.dao.FoodDao
+import kotlinx.coroutines.*
 
-class FoodRepository (private val foodDao: FoodDao) {
-    val getAllFoods: LiveData<List<Food>> = foodDao.getAllFoods()
 
-    suspend fun addFood(food: Food) {
-        foodDao.addFood(food)
+@OptIn(InternalCoroutinesApi::class)
+class FoodRepository(application: Application) {
+
+    val allFoods: LiveData<List<Food>>?
+
+    val searchResults = MutableLiveData<List<Food>>()
+    private var foodDao: FoodDao?
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
+
+
+
+    init {
+        val db: FoodDatabase? =
+            FoodDatabase.getDatabase(application)
+        foodDao = db?.foodDao()
+        allFoods = foodDao?.getAllFoods()
     }
 
-    suspend fun updateFood(food: Food) {
-        foodDao.updateFood(food)
+    fun insertFood(newfood: Food) {
+        coroutineScope.launch(Dispatchers.IO) {
+            asyncInsert(newfood)
+
+        }
     }
 
-    suspend fun deleteFood(food: Food) {
-        foodDao.deleteFood(food)
+    private suspend fun asyncInsert(food: Food) {
+        foodDao?.addFood(food)
     }
 
-    suspend fun deleteAllFoods() {
-        foodDao.deleteAll()
+    fun deleteFood(name: String) {
+        coroutineScope.launch(Dispatchers.IO) {
+            asyncDelete(name)
+        }
+    }
+
+    private suspend fun asyncDelete(name: String) {
+        foodDao?.deleteFood(name)
     }
 
 
+
+   // fun findFood (name: String) {
+
+   //     coroutineScope.launch(Dispatchers.Main) {
+   //         searchResults.value = asyncFind(name).await()
+    //    }
+   // }
+
+    //private suspend fun asyncFind(name: String): Deferred<List<Food>?> =
+
+    //    coroutineScope.async(Dispatchers.IO) {
+    //        return@async foodDao?.findFood(name)
+     //   }
 }

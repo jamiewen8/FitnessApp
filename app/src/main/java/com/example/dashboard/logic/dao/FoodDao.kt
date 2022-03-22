@@ -8,18 +8,23 @@ import com.example.dashboard.data.models.Food
 @Dao
 interface FoodDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFood(food: Food)
+    @Insert (onConflict = OnConflictStrategy.IGNORE)
+    fun addFood(food: Food)
 
     @Update
-    suspend fun updateFood(food: Food)
+    fun updateFood(food: Food)
 
-    @Delete
-    suspend fun deleteFood(food: Food)
+    @Query("DELETE FROM food_table WHERE food_name = :foodMember")
+    fun deleteFood(foodMember: String)
+
+    @Query("SELECT protein AND carbs AND fat FROM food_table WHERE id = :barcode")
+    fun getMacros(barcode: Int)
 
     @Query("SELECT * FROM food_table ORDER BY id DESC")
     fun getAllFoods(): LiveData<List<Food>>
 
     @Query("DELETE FROM food_table")
-    suspend fun deleteAll()
+    fun deleteAll()
+
+
 }

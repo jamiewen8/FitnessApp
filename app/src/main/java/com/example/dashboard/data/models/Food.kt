@@ -10,8 +10,8 @@ import kotlinx.android.parcel.Parcelize
 data class Food(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    //val food_name: String,
-    val measurement: String,
+    val food_name: String,
+    //val measurement: String,
     val protein: String,  //todo need to change this to integer because the strings are for testing
     val fat: String,
     val carbs: String,

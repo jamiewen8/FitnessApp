@@ -10,42 +10,32 @@ import com.example.dashboard.logic.repository.FoodRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FoodViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository: FoodRepository
-    val getAllFoods: LiveData<List<Food>>
 
 
-    init {
-        val foodDao= FoodDatabase.getDatabase(application).foodDao()
-        repository = FoodRepository(foodDao)
+class FoodViewModel(application: Application): AndroidViewModel(application){
 
-        getAllFoods = repository.getAllFoods
+    private val repository: FoodRepository = FoodRepository(application)
+    private val allFood: LiveData<List<Food>>?
+    //private val searchResults: MutableLiveData<List<Food>>
+
+
+    init{
+        allFood = repository.allFoods
+        //searchResults = respository.
     }
 
-    fun addFood(food: Food) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addFood(food)
-        }
+
+    fun insertFood(food: Food)
+    {
+        repository.insertFood(food)
     }
 
-    fun updateFood(food: Food) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateFood(food)
-        }
+
+    fun deleteFood(name: String)
+    {
+        repository.deleteFood(name)
     }
 
-    fun deleteFood(food: Food) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteFood(food)
-        }
-    }
-
-    fun deleteAllFoods() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAllFoods()
-        }
-    }
 
 
 }
