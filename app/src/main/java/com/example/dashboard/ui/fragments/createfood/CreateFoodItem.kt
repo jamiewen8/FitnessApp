@@ -3,8 +3,11 @@ package com.example.dashboard.ui.fragments.createfood
 
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,27 +19,51 @@ import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
 import java.util.*
 
+class CreateFoodItem : Fragment() {
 
-class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
-
-
-
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+    private var drawableSelected = 0
+    private var food_name = ""
+    private var protein = 0
+    private var fat = 0
+    private var carbs = 0
 
 
+    companion object {
+        fun newInstance() = CreateFoodItem()
+    }
+
+    val viewModel: FoodViewModel by viewModels()
+
+    private var _binding: CreateFoodItem? = null
 
 
 
+    private val binding get() = _binding!!
 
-        //Selected and image to put into our list
-        //drawableSelected()
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        observerSetup()
 
     }
 
-    //todo get rid of the measurement thing
+
+
+
+    private fun observerSetup(){
+        viewModel.getSearchResults().observe(this) { foods ->
+            foods?.let {
+                if (it.isNotEmpty()) {
+                    binding.something1.setImageBitmap(it[0].imageId)
+                    binding.
+                }
+            }
+
+        }
+    }
 
 
 
