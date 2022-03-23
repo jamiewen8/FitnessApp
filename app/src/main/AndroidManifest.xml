@@ -31,6 +31,7 @@
         <activity android:name=".ui.activities.FoodDiary"></activity>
         <activity android:name=".ui.activities.RewardPage"></activity>
         <activity android:name=".ui.introscreen.IntroActivity"></activity>
+        <activity android:name=".ui.activities.ScannerToCreateFood"></activity>
 
     </application>
 

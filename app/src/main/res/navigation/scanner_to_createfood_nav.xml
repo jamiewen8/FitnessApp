@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scanner_to_createfood"
+    app:startDestination="@id/createFoodItemfromscanner">
+
+    <fragment
+        android:id="@+id/createFoodItemfromscanner"
+        android:name="com.example.dashboard.ui.fragments.createfoodfromscanner.CreateFoodItemScanner"
+        android:label="scanner_create_food_item"
+        tools:layout="@layout/scanner_create_food_item" >
+        <action
+            android:id="@+id/action_createFoodItem2_to_foodList2"
+            app:destination="@id/foodList" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodList"
+        android:name="com.example.dashboard.ui.fragments.foodlist.FoodList"
+        android:label="fragment_food_list"
+        tools:layout="@layout/fragment_food_list" />
+</navigation>

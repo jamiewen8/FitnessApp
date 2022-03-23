@@ -1,10 +1,12 @@
 package com.example.dashboard.ui.activities
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import com.budiyev.android.codescanner.CodeScanner
 import androidx.core.content.ContextCompat
@@ -15,6 +17,7 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import com.example.dashboard.R
+import java.util.*
 
 
 //private const val CAMERA_REQUEST_CODE = 101
@@ -56,6 +59,8 @@ class SecondActivity : AppCompatActivity() {
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
                 viewModel.findFood(it.text.toInt())
+                val intent = Intent(this, ScannerToCreateFood::class.java)
+                startActivity(intent)
 
             }
         }
@@ -80,8 +85,10 @@ class SecondActivity : AppCompatActivity() {
             foods?.let {
                 if (it.isNotEmpty()) {
                     Toast.makeText(this, "Item is: ${it[0].food_name}", Toast.LENGTH_SHORT).show()
+
                 }
             }
+            //todo send this to the createfood item fragment --> display the protein, carbs and fat and the picture
 
         }
     }
