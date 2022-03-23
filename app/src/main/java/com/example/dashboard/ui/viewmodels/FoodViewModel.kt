@@ -42,6 +42,10 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
         repository.findFood(barcode)
     }
 
+    fun findFoodByImage(imageId: Int)
+    {
+        repository.findFoodByImage(imageId)
+    }
     fun getSearchResults(): MutableLiveData<List<Food>> {
         return searchResults
     }

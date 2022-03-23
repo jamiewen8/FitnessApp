@@ -42,28 +42,28 @@ class CreateFoodItem : Fragment() {
 
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        observerSetup()
-
-    }
-
-
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        //observerSetup()
+//
+//    }
 
 
-    private fun observerSetup(){
-        viewModel.getSearchResults().observe(this) { foods ->
-            foods?.let {
-                if (it.isNotEmpty()) {
-                    binding.something1.setImageBitmap(it[0].imageId)
-                    binding.
-                }
-            }
 
-        }
-    }
+
+//    private fun observerSetup(){
+//        viewModel.getSearchResults().observe(this) { foods ->
+//            foods?.let {
+//                if (it.isNotEmpty()) {
+//                    binding.something1.setImageBitmap(it[0].imageId)
+//                    binding.
+//                }
+//            }
+//
+//        }
+//    }
 
 
 

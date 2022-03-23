@@ -15,10 +15,9 @@ class FoodRepository(application: Application) {
     val allFoods: LiveData<List<Food>>?
 
     val searchResults = MutableLiveData<List<Food>>() //asynchronous search
+    val searchResults2 = MutableLiveData<List<Food>>()
     private var foodDao: FoodDao?
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
-
-
 
 
     init {
@@ -34,6 +33,7 @@ class FoodRepository(application: Application) {
 
         }
     }
+
     private suspend fun asyncInsert(food: Food) {
         foodDao?.addFood(food)
     }
@@ -48,9 +48,19 @@ class FoodRepository(application: Application) {
         foodDao?.deleteFood(name)
     }
 
+    fun findFoodByImage(id: Int) {
+        coroutineScope.launch(Dispatchers.Main) {
+            searchResults2.value = asyncFind2(id).await()
+        }
+    }
 
+    private suspend fun asyncFind2(id: Int): Deferred<List<Food>?> =
 
-    fun findFood (id: Int) {
+        coroutineScope.async(Dispatchers.IO) {
+            return@async foodDao?.getMacros(id)
+        }
+
+    fun findFood(id: Int) {
 
         coroutineScope.launch(Dispatchers.Main) {
             searchResults.value = asyncFind(id).await()
@@ -63,6 +73,11 @@ class FoodRepository(application: Application) {
         coroutineScope.async(Dispatchers.IO) {
             return@async foodDao?.getMacros(id)
         }
+
+
+
+
+
 }
 
 

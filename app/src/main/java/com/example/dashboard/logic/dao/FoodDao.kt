@@ -20,6 +20,9 @@ interface FoodDao {
     @Query("SELECT * FROM food_table WHERE Barcode = :barcode")
     fun getMacros(barcode: Int) : List<Food>
 
+    @Query("SELECT * FROM food_table WHERE imageId = :image")
+    fun getFood(image: Int) : List<Food>
+
     @Query("SELECT * FROM food_table ORDER BY Barcode DESC")
     fun getAllFoods(): LiveData<List<Food>>
 
