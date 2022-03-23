@@ -2,22 +2,16 @@ package com.example.dashboard.ui.activities
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.cardview.widget.CardView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.budiyev.android.codescanner.CodeScanner
 import androidx.core.content.ContextCompat
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScannerView
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
-import com.example.dashboard.ui.viewmodels.FoodViewModel
+import com.budiyev.android.codescanner.*
 import com.example.dashboard.R
-import java.util.*
+import com.example.dashboard.ui.fragments.createfoodfromscanner.CreateFoodItemScanner
+import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 
 //private const val CAMERA_REQUEST_CODE = 101
@@ -26,6 +20,7 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var codescanner: CodeScanner
 
     val viewModel: FoodViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +53,13 @@ class SecondActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
-                viewModel.findFood(it.text.toInt())
+
+
+
+
+
+
+
                 val intent = Intent(this, ScannerToCreateFood::class.java)
                 startActivity(intent)
 

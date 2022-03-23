@@ -8,6 +8,7 @@ import com.example.dashboard.R
 class ScannerToCreateFood : AppCompatActivity() {
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scanner_to_createfood)

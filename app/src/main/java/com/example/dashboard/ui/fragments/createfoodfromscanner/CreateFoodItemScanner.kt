@@ -1,21 +1,15 @@
 package com.example.dashboard.ui.fragments.createfoodfromscanner
 
 
-import android.os.Build
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.dashboard.R
-import com.example.dashboard.data.models.Food
 import com.example.dashboard.databinding.ScannerCreateFoodItemBinding
-import com.example.dashboard.ui.fragments.createfood.CreateFoodItem
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
 import java.util.*
@@ -24,7 +18,7 @@ import java.util.*
 class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
 
-
+    var barcode = 0
     private var drawableSelected = 0
     private var food_name = ""
     private var protein = 0
@@ -46,12 +40,25 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = ScannerCreateFoodItemBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
+        listenerSetup()
+        observerSetup()
+
+    }
+
+    private fun listenerSetup() {
+
+    }
+
+    @SuppressLint("FragmentLiveDataObserve")
     private fun observerSetup() {
         viewModel.getSearchResults().observe(this) { foods ->
             foods?.let {

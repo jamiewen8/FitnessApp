@@ -19,12 +19,12 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
     private val repository: FoodRepository = FoodRepository(application)
     private val allFood: LiveData<List<Food>>?
     private val searchResults: MutableLiveData<List<Food>>
-    private val searchResultsimage: MutableLiveData<List<Food>>
+
+
 
     init {
         allFood = repository.allFoods
         searchResults = repository.searchResults
-        searchResultsimage = repository.searchResults2
     }
 
 
@@ -43,16 +43,11 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
         repository.findFood(barcode)
     }
 
-    fun findFoodByImage(imageId: Int)
-    {
-        repository.findFoodByImage(imageId)
-    }
+
     fun getSearchResults(): MutableLiveData<List<Food>> {
         return searchResults
     }
 
-    fun getSearchResultsImage(): MutableLiveData<List<Food>> {
-        return searchResults
-    }
+
 
 }
