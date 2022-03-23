@@ -3,7 +3,9 @@ package com.example.dashboard.ui.fragments.createfoodfromscanner
 
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -12,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
+import com.example.dashboard.databinding.ScannerCreateFoodItemBinding
+import com.example.dashboard.ui.fragments.createfood.CreateFoodItem
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
 import java.util.*
@@ -19,34 +23,47 @@ import java.util.*
 
 class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
-    private var _binding = FragmentCreateFoodItemBinding? null
+
+
+    private var drawableSelected = 0
+    private var food_name = ""
+    private var protein = 0
+    private var fat = 0
+    private var carbs = 0
+
+
+    companion object {
+        fun newInstance() = CreateFoodItemScanner()
+    }
+
+    private var _binding: ScannerCreateFoodItemBinding? = null
+    private val binding get() = _binding!!
 
     val viewModel: FoodViewModel by viewModels()
 
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = ScannerCreateFoodItemBinding.inflate(inflater, container, false)
+        return binding.root
+
+    }
 
 
     private fun observerSetup() {
         viewModel.getSearchResults().observe(this) { foods ->
             foods?.let {
                 if (it.isNotEmpty()) {
-                    it[0].food_name
+                    binding.protein.text = it[0].protein
+                    binding.fat.text = it[0].fat
+                    binding.carbs.text = it[0].carbs
+                }
+            }
 
+        }
 
-
-
-
-        //Selected and image to put into our list
-        //drawableSelected()
 
     }
-
-    //todo get rid of the measurement thing
-
-
-
-
-
 }

@@ -26,7 +26,7 @@ import java.util.*
 class CreateFoodItem : Fragment() {
 
 
-    private var drawableSelected = 0
+
     private var food_name = ""
     private var protein = 0
     private var fat = 0
@@ -48,16 +48,36 @@ class CreateFoodItem : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        observerSetup()
         _binding = FragmentCreateFoodItemBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
+        listenerSetup()
+        observerSetup()
+
+    }
+
+
+    private fun listenerSetup(){
+
+        binding.something1.setOnClickListener{
+            var drawableSelected = 1
+            viewModel.findFoodByImage(drawableSelected)
+            binding.something2.alpha = 0.5f
+            binding.something3.alpha = 0.5f
+            binding.something4.alpha = 0.5f
+            binding.something5.alpha = 0.5f
+        }
+    }
 
 
     private fun observerSetup() {
-        viewModel.getSearchResults().observe(this) { foods ->
+        viewModel.getSearchResultsImage().observe(viewLifecycleOwner) { foods ->
             foods?.let {
                 if (it.isNotEmpty()) {
                     binding.protein.text = it[0].protein
@@ -67,7 +87,7 @@ class CreateFoodItem : Fragment() {
             }
 
         }
-
+    }
 
 
 }
