@@ -31,7 +31,7 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
         rv_habits.layoutManager = LinearLayoutManager(context)
 
         //Instantiate and create viewmodel observers
-        viewModels()
+        //viewModels()
 
         fab_add.setOnClickListener {
             findNavController().navigate(R.id.action_foodList_to_createFoodItem)
@@ -46,32 +46,32 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
         }
     }
 
-    private fun viewModels() {
-        foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
-
-        foodViewModel.getAllFoods.observe(viewLifecycleOwner, Observer {
-            adapter.setData(it)
-            foodList = it
-
-            if (it.isEmpty()) {
-                rv_habits.visibility = View.GONE
-                tv_emptyView.visibility = View.VISIBLE
-            } else {
-                rv_habits.visibility = View.VISIBLE
-                tv_emptyView.visibility = View.GONE
-            }
-        })
-    }
+//    private fun viewModels() {
+////        foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
+////
+////        foodViewModel.getAllFoods.observe(viewLifecycleOwner, Observer {
+////            adapter.setData(it)
+////            foodList = it
+////
+////            if (it.isEmpty()) {
+////                rv_habits.visibility = View.GONE
+////                tv_emptyView.visibility = View.VISIBLE
+////            } else {
+////                rv_habits.visibility = View.VISIBLE
+////                tv_emptyView.visibility = View.GONE
+////            }
+////        })
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.nav_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_delete -> foodViewModel.deleteAllFoods()
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.nav_delete -> foodViewModel.deleteAllFoods()
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 }

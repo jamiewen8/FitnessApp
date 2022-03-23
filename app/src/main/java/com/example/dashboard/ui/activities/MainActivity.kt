@@ -1,4 +1,4 @@
-package com.example.dashboard.ui.activities
+package com.example.dashboard
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -21,18 +21,25 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.widget.SeekBar
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.example.dashboard.R
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.dashboard.data.models.Food
+import com.example.dashboard.ui.fragments.foodlist.FoodList
 import com.example.dashboard.ui.introscreen.IntroActivity
+import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private var sensorManager:SensorManager? = null
     var running = false
+    private val viewModel: FoodViewModel by viewModels()
     private var totalSteps = 0f
     private var previousTotalSteps = 0f
     private val requestcodeforsteps = 100
@@ -58,10 +65,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         supportActionBar?.hide() //removing the action bar above to stop showing the name of the app
 
         loadSPData()
+        databaseSetup()
+        if (userFirstTime) {
+            userFirstTime = false
+            saveSPData()
 
-
-
-
+            val i = Intent(this, IntroActivity::class.java)
+            startActivity(i)
+            finish()
+        }
 
         //setupActionBarWithNavController(findNavController(R.id.navHostFragment))
 
@@ -187,7 +199,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
+    fun databaseSetup(){
+        //Add food to database
+        val name = arrayListOf<String>("Coco pops", "Frosties","Crunchy nut","Lucky charms")
+        val protein = arrayListOf<String>("1.9", "1.6", "2.5", "1.4")
+        val fat = arrayListOf<String>("0.6", "0.2", "0.3", "0.5")
+        val carbs = arrayListOf<String>("25", "30", "35", "45")
+        val drawableSelected = arrayListOf<Int>(1, 2, 3, 4)
+        for(i in 0..name.size-1){
+            val food = Food(name[i], protein[i], fat[i], carbs[i], drawableSelected[i])
+            viewModel.insertFood(food)
+        }
 
+    }
 
     override fun onResume() {
         super.onResume()
@@ -208,7 +232,28 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         sensorManager?.unregisterListener(this)
     }
 
+    override fun onSensorChanged(event: SensorEvent?) {
+        var steps = findViewById<TextView>(R.id.stepstaken)
+        var progresscircle = findViewById<CircularProgressBar>(R.id.progress_pedometer)
 
+        if (running){
+            totalSteps = event!!.values[0]
+            val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
+            steps.text = ("$currentSteps")
+
+
+            progresscircle.apply {
+                setProgressWithAnimation(currentSteps.toFloat())
+            }
+
+            if (currentSteps == 10){
+                sendNotification()
+                //sends the notification when it hits a certain amount of steps
+            }
+
+        }
+
+    }
 
     private fun resetSteps(){
         var steps = findViewById<TextView>(R.id.stepstaken)
@@ -224,8 +269,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             true
         }
-
-
     }
 
     private fun saveData() {
@@ -248,9 +291,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE)
         val savedNumber = sharedPreferences.getFloat("key1", 0f)
         Log.d("MainActivity", "$savedNumber")
-
-
-        previousTotalSteps = 0f
+        previousTotalSteps = savedNumber
     }
 
     private fun loadSPData(){
@@ -265,13 +306,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun requestPermission() {
-        var steps = findViewById<TextView>(R.id.stepstaken)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
                 requestcodeforsteps
-
             )
         }
     }
@@ -281,7 +320,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             this,
             Manifest.permission.ACTIVITY_RECOGNITION
         ) != PackageManager.PERMISSION_GRANTED
-
     }
 
     override fun onRequestPermissionsResult(
