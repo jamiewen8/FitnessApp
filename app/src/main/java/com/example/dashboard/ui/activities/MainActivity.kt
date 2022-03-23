@@ -31,9 +31,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dashboard.data.models.Food
+import com.example.dashboard.ui.activities.BMI
+import com.example.dashboard.ui.activities.FoodDiary
+import com.example.dashboard.ui.activities.RewardPage
+import com.example.dashboard.ui.activities.WaterIntake
 import com.example.dashboard.ui.fragments.foodlist.FoodList
 import com.example.dashboard.ui.introscreen.IntroActivity
 import com.example.dashboard.ui.viewmodels.FoodViewModel
+
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -232,28 +237,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         sensorManager?.unregisterListener(this)
     }
 
-    override fun onSensorChanged(event: SensorEvent?) {
-        var steps = findViewById<TextView>(R.id.stepstaken)
-        var progresscircle = findViewById<CircularProgressBar>(R.id.progress_pedometer)
-
-        if (running){
-            totalSteps = event!!.values[0]
-            val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
-            steps.text = ("$currentSteps")
-
-
-            progresscircle.apply {
-                setProgressWithAnimation(currentSteps.toFloat())
-            }
-
-            if (currentSteps == 10){
-                sendNotification()
-                //sends the notification when it hits a certain amount of steps
-            }
-
-        }
-
-    }
 
     private fun resetSteps(){
         var steps = findViewById<TextView>(R.id.stepstaken)

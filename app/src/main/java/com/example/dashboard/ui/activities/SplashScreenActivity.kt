@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import com.example.dashboard.MainActivity
 import com.example.dashboard.R
 
 class SplashScreenActivity : AppCompatActivity() {
