@@ -10,59 +10,56 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="My Dashboard"
-            android:textSize="24sp"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:layout_margin="20dp"/>
-
+            android:textSize="24sp" />
 
         <GridLayout
-            android:layout_width="match_parent"
+            android:layout_width="383dp"
             android:layout_height="match_parent"
-            android:rowCount="3"
-            android:columnCount="2"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:alignmentMode="alignMargins"
-            android:layout_gravity="center_horizontal"
-            android:columnOrderPreserved="false">
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="3">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/grey"
-                android:layout_margin="10dp"
                 android:id="@+id/scan"
-                >
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/scan"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/scan" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:text="Scan Food"
-                        android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:layout_marginTop="20dp"
-                        />
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -70,152 +67,150 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/rewardspage"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/grey"
                 android:layout_margin="10dp"
-                android:id="@+id/rewardspage">
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/reward"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/reward" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:text="Rewards Page"
-                        android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:layout_marginTop="20dp"
-                        />
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/grey"
-                android:layout_margin="10dp"
                 android:id="@+id/fooddiary"
-                app:navGraph="@navigation/main_nav"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
                 app:defaultNavHost="true"
-                >
+                app:navGraph="@navigation/main_nav">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/diary"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/diary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:text="Food Diary"
-                        android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:layout_marginTop="20dp"
-                        />
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/bmipage"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/grey"
                 android:layout_margin="10dp"
-                android:id="@+id/bmipage">
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/bmi"
-                        android:layout_marginTop="12dp"/>
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/bmi" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BMI"
-                        android:textSize="18sp"
-                        android:textColor="@color/white"
                         android:layout_marginTop="20dp"
-                        />
+                        android:text="BMI"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/waterintake"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/grey"
                 android:layout_margin="10dp"
-                android:id="@+id/waterintake">
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
 
 
                 <com.example.dashboard.ui.activities.WaterIntake
                     android:id="@+id/water_animation"
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+
                 <SeekBar
                     android:id="@+id/seek_bar"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp" />
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp"
+                android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/grey"
-                android:layout_margin="10dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
 
                     <com.mikhaellopez.circularprogressbar.CircularProgressBar
@@ -239,22 +234,17 @@
                         android:textSize="30sp" />
 
                     <TextView
+                        android:id="@+id/maxsteps"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/maxsteps"
                         android:layout_below="@id/stepstaken"
                         android:layout_centerInParent="true"
                         android:text="/8000"
                         android:textColor="@color/red"
-                        android:textSize="14sp"/>
-
+                        android:textSize="14sp" />
 
 
                 </RelativeLayout>
-
-
-
-
 
 
             </androidx.cardview.widget.CardView>

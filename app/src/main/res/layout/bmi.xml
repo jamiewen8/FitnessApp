@@ -8,10 +8,11 @@
 
     <TextView
         android:id="@+id/app_heading"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
         android:text="@string/bmi_calculator"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@color/black"
         android:textStyle="bold" />
