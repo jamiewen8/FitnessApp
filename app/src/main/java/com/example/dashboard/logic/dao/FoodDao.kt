@@ -8,7 +8,7 @@ import com.example.dashboard.data.models.Food
 @Dao
 interface FoodDao {
 
-    @Insert (onConflict = OnConflictStrategy.IGNORE)
+    @Insert //(onConflict = OnConflictStrategy.IGNORE)
     fun addFood(food: Food)
 
     @Update
@@ -17,10 +17,10 @@ interface FoodDao {
     @Query("DELETE FROM food_table WHERE food_name = :foodMember")
     fun deleteFood(foodMember: String)
 
-    @Query("SELECT protein AND carbs AND fat FROM food_table WHERE id = :barcode")
-    fun getMacros(barcode: Int)
+    @Query("SELECT * FROM food_table WHERE Barcode = :barcode")
+    fun getMacros(barcode: Int) : List<Food>
 
-    @Query("SELECT * FROM food_table ORDER BY id DESC")
+    @Query("SELECT * FROM food_table ORDER BY Barcode DESC")
     fun getAllFoods(): LiveData<List<Food>>
 
     @Query("DELETE FROM food_table")

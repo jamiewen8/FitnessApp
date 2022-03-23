@@ -21,20 +21,25 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.widget.SeekBar
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.dashboard.data.models.Food
 import com.example.dashboard.ui.fragments.foodlist.FoodList
 import com.example.dashboard.ui.introscreen.IntroActivity
+import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private var sensorManager:SensorManager? = null
     var running = false
+    private val viewModel: FoodViewModel by viewModels()
     private var totalSteps = 0f
     private var previousTotalSteps = 0f
     private val requestcodeforsteps = 100
@@ -60,7 +65,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         supportActionBar?.hide() //removing the action bar above to stop showing the name of the app
 
         loadSPData()
-
+        databaseSetup()
         if (userFirstTime) {
             userFirstTime = false
             saveSPData()
@@ -151,7 +156,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
+    fun databaseSetup(){
+        //Add food to database
+        val name = arrayListOf<String>("Coco pops", "Frosties","Crunchy nut","Lucky charms")
+        val protein = arrayListOf<String>("1.9", "1.6", "2.5", "1.4")
+        val fat = arrayListOf<String>("0.6", "0.2", "0.3", "0.5")
+        val carbs = arrayListOf<String>("25", "30", "35", "45")
+        val drawableSelected = arrayListOf<Int>(1, 2, 3, 4)
+        for(i in 0..name.size-1){
+            val food = Food(name[i], protein[i], fat[i], carbs[i], drawableSelected[i])
+            viewModel.insertFood(food)
+        }
 
+    }
 
     override fun onResume() {
         super.onResume()
