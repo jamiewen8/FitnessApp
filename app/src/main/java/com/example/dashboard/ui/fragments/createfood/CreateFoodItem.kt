@@ -71,6 +71,7 @@ class CreateFoodItem : Fragment() {
             binding.something3.alpha = 0.5f
             binding.something4.alpha = 0.5f
             binding.something5.alpha = 0.5f
+            binding.something1.alpha = 1f
         }
         binding.something2.setOnClickListener{
             viewModel.findFood(2)
@@ -78,6 +79,7 @@ class CreateFoodItem : Fragment() {
             binding.something3.alpha = 0.5f
             binding.something4.alpha = 0.5f
             binding.something5.alpha = 0.5f
+            binding.something2.alpha = 1f
         }
         binding.something3.setOnClickListener{
             viewModel.findFood(3)
@@ -85,6 +87,7 @@ class CreateFoodItem : Fragment() {
             binding.something2.alpha = 0.5f
             binding.something4.alpha = 0.5f
             binding.something5.alpha = 0.5f
+            binding.something3.alpha = 1f
         }
         binding.something4.setOnClickListener{
             viewModel.findFood(4)
@@ -92,6 +95,7 @@ class CreateFoodItem : Fragment() {
             binding.something2.alpha = 0.5f
             binding.something3.alpha = 0.5f
             binding.something5.alpha = 0.5f
+            binding.something4.alpha = 1f
         }
         binding.something5.setOnClickListener{
             viewModel.findFood(5)
@@ -99,6 +103,7 @@ class CreateFoodItem : Fragment() {
             binding.something3.alpha = 0.5f
             binding.something4.alpha = 0.5f
             binding.something1.alpha = 0.5f
+            binding.something5.alpha = 1f
         }
 
     }
