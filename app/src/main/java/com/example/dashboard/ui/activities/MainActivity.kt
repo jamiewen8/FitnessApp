@@ -1,4 +1,4 @@
-package com.example.dashboard
+package com.example.dashboard.ui.activities
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.ui.activities.BMI
 import com.example.dashboard.ui.activities.FoodDiary

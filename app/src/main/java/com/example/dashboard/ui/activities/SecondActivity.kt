@@ -1,4 +1,4 @@
-package com.example.dashboard
+package com.example.dashboard.ui.activities
 
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity

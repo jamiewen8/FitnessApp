@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
-import com.example.dashboard.MainActivity
+import com.example.dashboard.ui.activities.MainActivity
 import com.example.dashboard.R
 import com.example.dashboard.data.models.IntroView
 import com.example.dashboard.ui.introscreen.adapters.ViewPagerIntroAdapter
