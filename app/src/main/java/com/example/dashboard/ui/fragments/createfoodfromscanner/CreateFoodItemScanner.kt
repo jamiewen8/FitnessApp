@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.dashboard.R
 import com.example.dashboard.databinding.ScannerCreateFoodItemBinding
@@ -17,6 +18,9 @@ import java.util.*
 
 class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
+    val viewModel: FoodViewModel by activityViewModels()
+
+
 
     var barcode = 0
     private var drawableSelected = 0
@@ -26,6 +30,7 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
     private var carbs = 0
 
 
+
     companion object {
         fun newInstance() = CreateFoodItemScanner()
     }
@@ -33,13 +38,14 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
     private var _binding: ScannerCreateFoodItemBinding? = null
     private val binding get() = _binding!!
 
-    val viewModel: FoodViewModel by viewModels()
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         _binding = ScannerCreateFoodItemBinding.inflate(inflater, container, false)
         return binding.root
@@ -60,7 +66,7 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
     @SuppressLint("FragmentLiveDataObserve")
     private fun observerSetup() {
-        viewModel.getSearchResults().observe(this) { foods ->
+        viewModel.getSearchResults().observe(this, { foods ->
             foods?.let {
                 if (it.isNotEmpty()) {
                     binding.protein.text = it[0].protein
@@ -69,7 +75,7 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
                 }
             }
 
-        }
+        })
 
 
     }

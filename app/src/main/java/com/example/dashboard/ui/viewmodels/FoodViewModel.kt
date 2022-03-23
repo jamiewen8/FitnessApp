@@ -1,6 +1,7 @@
 package com.example.dashboard.ui.viewmodels
 
 import android.app.Application
+import android.content.ClipData
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,10 +23,12 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
 
 
 
+
     init {
         allFood = repository.allFoods
         searchResults = repository.searchResults
     }
+
 
 
     fun insertFood(food: Food)

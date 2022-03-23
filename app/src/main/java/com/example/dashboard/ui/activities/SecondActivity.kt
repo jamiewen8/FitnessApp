@@ -53,15 +53,9 @@ class SecondActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
-
-
-
-
-
-
-
-                val intent = Intent(this, ScannerToCreateFood::class.java)
-                startActivity(intent)
+                viewModel.findFood(it.text.toInt())
+                //val intent = Intent(this, ScannerToCreateFood::class.java)
+                //startActivity(intent)
 
             }
         }
@@ -89,8 +83,6 @@ class SecondActivity : AppCompatActivity() {
 
                 }
             }
-            //todo send this to the createfood item fragment --> display the protein, carbs and fat and the picture
-
         }
     }
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
