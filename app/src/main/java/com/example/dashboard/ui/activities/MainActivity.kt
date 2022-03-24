@@ -178,6 +178,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         var steps = findViewById<TextView>(R.id.stepstaken)
         var progresscircle = findViewById<CircularProgressBar>(R.id.progress_pedometer)
 
+
+
         if (running){
 
             totalSteps = event!!.values[0]
@@ -198,8 +200,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             if (currentSteps == 10){
                 sendNotification()
+
+
+
+
                 //sends the notification when it hits a certain amount of steps
+
             }
+
 
         }
 

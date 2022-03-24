@@ -2,6 +2,7 @@ package com.example.dashboard.ui.activities
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -18,6 +19,9 @@ import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var codescanner: CodeScanner
+
+
+    private var Sound:MediaPlayer? = null
 
     val viewModel: FoodViewModel by viewModels()
 
@@ -51,6 +55,10 @@ class SecondActivity : AppCompatActivity() {
 
         codescanner.decodeCallback = DecodeCallback {
             runOnUiThread {
+                Sound = MediaPlayer.create(this, R.raw.dingsound)
+                Sound?.start()
+
+                //two lines of code above to allow the device to play the dingsound when the user uses the scanner
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
                 viewModel.findFood(it.text.toInt())
