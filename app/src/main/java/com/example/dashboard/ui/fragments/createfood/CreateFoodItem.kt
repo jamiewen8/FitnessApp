@@ -56,7 +56,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
 
 
-        if ( drawableSelected == 0) {
+        if (!( drawableSelected == 0)) {
             val food = Food(0, "measurement","protein","fat","carbs", drawableSelected) //todo add foodname here
 
             //add the food if all the fields are filled

@@ -58,11 +58,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="390gr" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_box_rounded"
                     android:backgroundTint="@color/blue"
@@ -76,6 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
+                    android:id="@+id/proteinrecycle"
                     android:text="19.5 gr" />
 
                 <TextView
@@ -94,6 +90,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
+                    android:id="@+id/fatrecycle"
+
                     android:text="7.5 gr" />
 
                 <TextView
@@ -112,6 +110,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
+                    android:id="@+id/carbsrecycle"
+
                     android:text="32 gr" />
 
                 <View
