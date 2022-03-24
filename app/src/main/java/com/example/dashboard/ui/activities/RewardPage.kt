@@ -29,7 +29,7 @@ class RewardPage : AppCompatActivity() {
         if(steps?.toInt()!! >= 10){
             sharingImage2.alpha = 1f
         }
-        if(waterProgress?.toInt() == 100)
+        if(waterProgress?.toInt()!! >= 100)
         {
             sharingImage.alpha = 1f
         }
