@@ -16,9 +16,9 @@ import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 
 
-class CreateFoodItemScanner : Fragment() {
+class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
-    private var adapter: FoodListAdapter? = null
+    //private var adapter: FoodListAdapter? = null
     val viewModel: FoodViewModel by activityViewModels()
 
 
