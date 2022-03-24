@@ -53,9 +53,9 @@ class SecondActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
-                viewModel.findFood(it.text.toInt())
-                //val intent = Intent(this, ScannerToCreateFood::class.java)
-                //startActivity(intent)
+                val intent = Intent(this, DiaryActivity::class.java)
+                intent.putExtra("barcode", it.text)
+                startActivity(intent)
 
             }
         }
