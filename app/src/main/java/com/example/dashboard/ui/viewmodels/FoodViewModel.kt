@@ -21,7 +21,8 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
     private val allFood: LiveData<List<Food>>?
     private val searchResults: MutableLiveData<List<Food>>
 
-
+    private val mutableSelectedItem = MutableLiveData<Food>()
+    val selectedItem: LiveData<Food> get() = mutableSelectedItem
 
 
     init {
@@ -30,6 +31,9 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
     }
 
 
+    fun selectItem(food: Food) {
+        mutableSelectedItem.value = food
+    }
 
     fun insertFood(food: Food)
     {
@@ -50,6 +54,7 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
     fun getSearchResults(): MutableLiveData<List<Food>> {
         return searchResults
     }
+
 
 
 
