@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
-import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
+//import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_food_list.*
 

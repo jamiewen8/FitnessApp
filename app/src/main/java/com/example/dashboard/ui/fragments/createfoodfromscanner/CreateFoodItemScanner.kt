@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dashboard.R
 import com.example.dashboard.databinding.ScannerCreateFoodItemBinding
-import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
+//import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 

@@ -1,18 +1,23 @@
 package com.example.dashboard.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
+import com.example.dashboard.ui.activities.DiaryActivity
+import com.example.dashboard.ui.activities.RewardPage
 import com.example.dashboard.ui.fragments.createfood.CreateFoodItem
 import com.example.dashboard.ui.viewmodels.FoodViewModel
+import kotlin.math.absoluteValue
 
 class add_food : Fragment(R.layout.add_food) {
 
@@ -20,12 +25,13 @@ class add_food : Fragment(R.layout.add_food) {
         fun newInstance() = CreateFoodItem()
     }
 
+
     private var _binding: FragmentCreateFoodItemBinding? = null
     private val binding get() = _binding!!
 
     val viewModel: FoodViewModel by viewModels()
 
-
+    var idNum: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +65,9 @@ class add_food : Fragment(R.layout.add_food) {
         binding.btnConfirm.setOnClickListener{
             val food = Food(binding.name.text as String, binding.protein.text as String, binding.fat.text as String, binding.carbs.text as String, 1)
             viewModel.selectItem(food)
+            val bundle = Bundle()
+            bundle.putString("value", idNum.toString())
+            val seeDiary = see_diary()
 
         }
 
@@ -111,6 +120,7 @@ class add_food : Fragment(R.layout.add_food) {
         viewModel.getSearchResults().observe(this) { foods ->
             foods?.let {
                 if (it.isNotEmpty()) {
+                    idNum =  it[0].id
                     binding.name.text = it[0].food_name
                     binding.protein.text = it[0].protein
                     binding.fat.text = it[0].fat

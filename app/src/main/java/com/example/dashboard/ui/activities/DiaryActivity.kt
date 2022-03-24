@@ -47,7 +47,16 @@ class DiaryActivity: AppCompatActivity() {
             Toast.makeText(this, "Item out of current dictionary", Toast.LENGTH_SHORT).show()
         }
 
-
+        val passToFoodItem = intent.getStringExtra("food")
+        if(passToFoodItem != null){
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            val myFragment = see_diary()
+            val bundle = Bundle()
+            bundle.putString("id", passToFoodItem)
+            myFragment.arguments = bundle
+            fragmentTransaction.add(R.id.fragmentContainer, myFragment).commit()
+        }
     }
 
 
