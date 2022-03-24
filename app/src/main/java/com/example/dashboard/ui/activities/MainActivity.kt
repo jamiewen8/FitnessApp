@@ -204,14 +204,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
 
     }
-
+    //inserting in to database
     fun databaseSetup(){
         //Add food to database
-        val name = arrayListOf<String>("Coco pops", "Frosties","Crunchy nut","Lucky charms")
-        val protein = arrayListOf<String>("1.9", "1.6", "2.5", "1.4")
-        val fat = arrayListOf<String>("0.6", "0.2", "0.3", "0.5")
-        val carbs = arrayListOf<String>("25", "30", "35", "45")
-        val drawableSelected = arrayListOf<Int>(1, 2, 3, 4)
+        val name = arrayListOf<String>("Coco pops", "Frosties","Crunchy nut","Lucky charms", "Weetabix")
+        val protein = arrayListOf<String>("1.9", "1.6", "2.5", "1.4", "4.5")
+        val fat = arrayListOf<String>("0.6", "0.2", "0.3", "0.5", "0.8")
+        val carbs = arrayListOf<String>("25", "30", "35", "45", "26")
+        val drawableSelected = arrayListOf<Int>(1, 2, 3, 4, 5)
         for(i in 0..name.size-1){
             val food = Food(name[i], protein[i], fat[i], carbs[i], drawableSelected[i])
             viewModel.insertFood(food)

@@ -8,27 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dashboard.R
 import com.example.dashboard.databinding.ScannerCreateFoodItemBinding
+import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
 import com.example.dashboard.ui.viewmodels.FoodViewModel
-import kotlinx.android.synthetic.main.fragment_create_food_item.*
-import java.util.*
 
 
-class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
+class CreateFoodItemScanner : Fragment() {
+
+    private var adapter: FoodListAdapter? = null
     val viewModel: FoodViewModel by activityViewModels()
-
-
-
-    var barcode = 0
-    private var drawableSelected = 0
-    private var food_name = ""
-    private var protein = 0
-    private var fat = 0
-    private var carbs = 0
-
 
 
     companion object {
@@ -66,7 +57,7 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
 
     @SuppressLint("FragmentLiveDataObserve")
     private fun observerSetup() {
-        viewModel.getSearchResults().observe(this, { foods ->
+        viewModel.getSearchResults().observe(this) { foods ->
             foods?.let {
                 if (it.isNotEmpty()) {
                     binding.protein.text = it[0].protein
@@ -75,8 +66,13 @@ class CreateFoodItemScanner : Fragment(R.layout.scanner_create_food_item) {
                 }
             }
 
-        })
-
-
+        }
     }
+
+
+
+//    private fun recyclerSetup(){
+//        adapter = FoodListAdapter(R.layout.scanner_create_food_item)
+//        binding.FoodRecycler.adapter = adapter
+//    }
 }

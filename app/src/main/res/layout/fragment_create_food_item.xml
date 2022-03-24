@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,11 +14,12 @@
 
 
         <LinearLayout
-            android:id="@+id/ll_textviews"
+            android:id="@+id/protein_textviews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:textAlignment="center">
 
 
             <LinearLayout
@@ -32,7 +34,8 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/coco_pops" />
 
                 <ImageView
                     android:id="@+id/something2"
@@ -40,7 +43,8 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/frosties" />
 
                 <ImageView
                     android:id="@+id/something3"
@@ -48,7 +52,8 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/crunchy_nut" />
 
                 <ImageView
                     android:id="@+id/something4"
@@ -56,7 +61,8 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/lucky_charms" />
 
                 <ImageView
                     android:id="@+id/something5"
@@ -64,87 +70,106 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:rotation="-90"
+                    android:scaleType="centerInside"
+                    android:scaleX="1.4"
+                    android:scaleY="1.1"
+                    android:src="@drawable/weetabix" />
 
             </LinearLayout>
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
+                android:layout_width="145dp"
+                android:layout_height="236dp"
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_box_rounded"
                     android:backgroundTint="@color/blue"
+                    android:gravity="center_horizontal"
                     android:paddingHorizontal="6dp"
                     android:paddingVertical="2dp"
-                    android:text="P"
+                    android:text="Name"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:text="19.5 gr"
-                    android:inputType="number"
-                    android:id="@+id/protein"/>
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_box_rounded"
                     android:backgroundTint="@color/blue"
+                    android:gravity="center_horizontal"
                     android:paddingHorizontal="6dp"
                     android:paddingVertical="2dp"
-                    android:text="F"
+                    android:text="Protein"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:text="7.5 gr"
-                    android:inputType="number"
-                    android:id="@+id/fat"/>
+                    android:id="@+id/protein"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_box_rounded"
                     android:backgroundTint="@color/blue"
-                    android:paddingHorizontal="6dp"
+                    android:paddingHorizontal="5dp"
                     android:paddingVertical="2dp"
-                    android:text="C"
+                    android:text="Fat"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/fat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:text="32 gr"
-                    android:inputType="number"
-                    android:id="@+id/carbs"/>
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_box_rounded"
+                    android:backgroundTint="@color/blue"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="Carbs"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
 
-                <NumberPicker
-                    android:id="@+id/measurementgrams"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="#26A69A"
-                    android:inputType="number"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/carbs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
