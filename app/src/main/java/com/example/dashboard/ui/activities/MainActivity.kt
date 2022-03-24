@@ -20,6 +20,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.widget.Button
 import android.widget.SeekBar
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
@@ -39,7 +40,7 @@ import com.example.dashboard.ui.activities.WaterIntake
 import com.example.dashboard.ui.fragments.foodlist.FoodList
 import com.example.dashboard.ui.introscreen.IntroActivity
 import com.example.dashboard.ui.viewmodels.FoodViewModel
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -49,6 +50,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var totalSteps = 0f
     private var previousTotalSteps = 0f
     private val requestcodeforsteps = 100
+    private var waterProgress = 0
+
+
     //the above are for the pedometer. Calculating the total steps, previous steps and getting the request code for the pedometer to work
     // making sure that running is off and that the sensor is checked
     //api >29 must include the permissions
@@ -152,6 +156,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val rewardspage = findViewById<CardView>(R.id.rewardspage)
         rewardspage.setOnClickListener{
             val intent = Intent(this, RewardPage::class.java)
+            var currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
+            intent.putExtra("steps", currentSteps.toString())
+            intent.putExtra("water", waterProgress.toString())
             startActivity(intent)
         }
 
@@ -375,19 +382,34 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
 
+
     private fun initWaterIntake() {
         water_intake = findViewById(R.id.water_animation)
-        seek_bar = findViewById(R.id.seek_bar)
-        seek_bar!!.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                water_intake!!.setProgress(progress.toFloat())
-            }
+        var waterButton = findViewById(R.id.waterAdd) as Button
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+        waterButton.setOnClickListener{
+            waterProgress += 5
+            Toast.makeText(this, "Added 100ml", Toast.LENGTH_SHORT).show()
+            water_intake!!.setProgress(waterProgress.toFloat() )
+        }
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        waterButton.setOnLongClickListener{
+            waterProgress = 0
+            water_intake!!.setProgress(waterProgress.toFloat() )
+            true
+        }
 
-        })
+//        seek_bar!!.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+//            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+//                water_intake!!.setProgress(progress.toFloat())
+//                waterIntake = progress
+//            }
+//
+//            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+//
+//            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+//
+//        })
     }
 
 

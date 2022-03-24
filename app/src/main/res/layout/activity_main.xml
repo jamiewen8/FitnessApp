@@ -189,12 +189,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp" />
 
-                <SeekBar
-                    android:id="@+id/seek_bar"
+                <Button
+                    android:id="@+id/waterAdd"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="20dp" />
+                    android:layout_height="match_parent"
+                    android:background="#00FFFFFF" />
 
 
             </androidx.cardview.widget.CardView>
