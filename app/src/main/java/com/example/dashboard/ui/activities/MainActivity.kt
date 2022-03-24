@@ -21,6 +21,7 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.widget.SeekBar
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -33,6 +34,7 @@ import com.example.dashboard.ui.introscreen.IntroActivity
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private var sensorManager:SensorManager? = null
     var running = false
+
     private var totalSteps = 0f
     private var previousTotalSteps = 0f
     private val requestcodeforsteps = 100
@@ -138,6 +140,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
 
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.navHostFragment)

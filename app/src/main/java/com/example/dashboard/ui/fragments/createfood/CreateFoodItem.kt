@@ -22,10 +22,10 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
     private var drawableSelected = 0
     private var food_name = ""
-    private var protein = 0
-    private var fat = 0
-    private var carbs = 0
-    private var measurement = 0
+    private var protein = ""
+    private var fat = ""
+    private var carbs = ""
+
 
 
     private lateinit var foodViewModel: FoodViewModel
@@ -48,16 +48,10 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
     private fun addFoodToDB() {
 
-
-        protein()
-        fat()
-        carbs()
-        measurement()
-
-
+        drawableSelected()
 
         if (!( drawableSelected == 0)) {
-            val food = Food(0, "measurement","protein","fat","carbs", drawableSelected) //todo add foodname here
+            val food = Food(0, "measurement",protein,fat,carbs, drawableSelected) //todo add foodname here
 
             //add the food if all the fields are filled
             foodViewModel.addFood(food)
@@ -74,6 +68,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
         something1.setOnClickListener {
             something1.isSelected = !something1.isSelected
             drawableSelected = R.drawable.ic_tea
+
 
             //de-select the other options when we pick an image
             something2.isSelected = false
@@ -128,94 +123,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
     }
 
-    private fun protein() {
-        something1.setOnClickListener {
-            protein = 5
-        }
 
-        something2.setOnClickListener {
-            protein = 5
-        }
-
-        something3.setOnClickListener {
-            protein = 5
-        }
-
-        something4.setOnClickListener {
-            protein = 5
-        }
-
-        something5.setOnClickListener {
-            protein = 5
-        }
-
-    }
-    private fun fat() {
-        something1.setOnClickListener {
-            fat = 5
-        }
-
-        something2.setOnClickListener {
-            fat = 5
-        }
-
-        something3.setOnClickListener {
-            fat = 5
-        }
-
-        something4.setOnClickListener {
-            fat = 5
-        }
-
-        something5.setOnClickListener {
-            fat = 5
-        }
-
-    }
-    private fun carbs() {
-        something1.setOnClickListener {
-            carbs = 5
-        }
-
-        something2.setOnClickListener {
-            carbs = 5
-        }
-
-        something3.setOnClickListener {
-            carbs = 5
-        }
-
-        something4.setOnClickListener {
-            carbs = 5
-        }
-
-        something5.setOnClickListener {
-            carbs = 5
-        }
-
-    }
-    private fun measurement() {
-        something1.setOnClickListener {
-            measurement = 5
-        }
-
-        something2.setOnClickListener {
-            measurement = 5
-        }
-
-        something3.setOnClickListener {
-            measurement = 5
-        }
-
-        something4.setOnClickListener {
-            measurement = 5
-        }
-
-        something5.setOnClickListener {
-            measurement = 5
-        }
-
-    }
 
 
 

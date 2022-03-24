@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.logic.dao.FoodDao
 
-class FoodRepository (private val foodDao: FoodDao) {
+class FoodRepository(private val foodDao: FoodDao) {
     val getAllFoods: LiveData<List<Food>> = foodDao.getAllFoods()
 
     suspend fun addFood(food: Food) {

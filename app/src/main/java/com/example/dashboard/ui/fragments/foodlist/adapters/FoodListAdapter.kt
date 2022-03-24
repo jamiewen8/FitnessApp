@@ -37,10 +37,10 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentFood = foodsList[position]
         holder.itemView.iv_food_icon.setImageResource(currentFood.imageId)
-        holder.itemView.tv_item_title.text = currentFood.measurement
-        holder.itemView.proteinrecycle.text =currentFood.protein
-        holder.itemView.fatrecycle.text = currentFood.fat
-        holder.itemView.carbsrecycle.text = currentFood.carbs
+        holder.itemView.tv_item_title.text = currentFood.food_name
+        holder.itemView.proteinrecycle.text = currentFood.protein.toString()
+        holder.itemView.fatrecycle.text = currentFood.fat.toString()
+        holder.itemView.carbsrecycle.text = currentFood.carbs.toString()
     }
 
     override fun getItemCount(): Int {
