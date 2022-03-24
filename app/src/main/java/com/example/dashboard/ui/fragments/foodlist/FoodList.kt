@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_food_list.*
 
 class FoodList : Fragment(R.layout.fragment_food_list) {
 
-    private lateinit var foodList: List<Food>
+    /*private lateinit var foodList: List<Food>
     private lateinit var foodViewModel: FoodViewModel
     private lateinit var adapter: FoodListAdapter
 
@@ -45,7 +45,7 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
             swipeToRefresh.isRefreshing = false
         }
     }
-
+*/
 //    private fun viewModels() {
 ////        foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
 ////

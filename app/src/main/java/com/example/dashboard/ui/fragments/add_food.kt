@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.dashboard.R
+import com.example.dashboard.data.models.Food
 import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
 import com.example.dashboard.ui.fragments.createfood.CreateFoodItem
 import com.example.dashboard.ui.viewmodels.FoodViewModel
@@ -31,6 +33,7 @@ class add_food : Fragment(R.layout.add_food) {
     ): View? {
         _binding = FragmentCreateFoodItemBinding.inflate(inflater, container, false)
         return binding.root
+        barcodeCheck()
 
     }
 
@@ -42,10 +45,20 @@ class add_food : Fragment(R.layout.add_food) {
 
     }
 
+    private fun barcodeCheck()
+    {
+        val bundle = arguments
+        val value = bundle!!.getString("barcode")
+        if (value != null ) {
+            viewModel.findFood(value.toInt())
+        }
+    }
 
     private fun listenerSetup(){
 
         binding.btnConfirm.setOnClickListener{
+            val food = Food(binding.name.text as String, binding.protein.text as String, binding.fat.text as String, binding.carbs.text as String, 1)
+            viewModel.selectItem(food)
 
         }
 
@@ -107,4 +120,7 @@ class add_food : Fragment(R.layout.add_food) {
 
         }
     }
+
+
+
 }
