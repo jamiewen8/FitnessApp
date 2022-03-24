@@ -32,6 +32,7 @@
         <activity android:name=".ui.activities.RewardPage"></activity>
         <activity android:name=".ui.introscreen.IntroActivity"></activity>
         <activity android:name=".ui.activities.ScannerToCreateFood"></activity>
+        <activity android:name=".ui.activities.DiaryActivity"></activity>
 
     </application>
 

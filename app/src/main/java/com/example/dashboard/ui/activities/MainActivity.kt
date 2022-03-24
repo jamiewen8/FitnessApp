@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         val fooddiary = findViewById<CardView>(R.id.fooddiary)
         fooddiary.setOnClickListener{
-            val intent = Intent(this, FoodDiary::class.java)
+            val intent = Intent(this, DiaryActivity::class.java)
             startActivity(intent)
         }
 
