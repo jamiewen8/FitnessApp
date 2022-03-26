@@ -34,6 +34,7 @@
         <activity android:name=".ui.activities.ScannerToCreateFood"></activity>
         <activity android:name=".ui.activities.DiaryActivity"></activity>
 
+
     </application>
 
 </manifest>

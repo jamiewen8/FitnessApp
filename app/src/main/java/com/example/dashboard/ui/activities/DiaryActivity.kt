@@ -1,18 +1,17 @@
 package com.example.dashboard.ui.activities
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.dashboard.R
+import com.example.dashboard.data.models.Food
 import com.example.dashboard.databinding.ActivityDiaryBinding
+import com.example.dashboard.ui.Interface.Communicator
 import com.example.dashboard.ui.fragments.add_food
 import com.example.dashboard.ui.fragments.see_diary
-import kotlinx.android.synthetic.main.activity_diary.*
 
-class DiaryActivity: AppCompatActivity() {
+class DiaryActivity: AppCompatActivity(), Communicator {
 
     lateinit var binding: ActivityDiaryBinding
 
@@ -47,16 +46,8 @@ class DiaryActivity: AppCompatActivity() {
             Toast.makeText(this, "Item out of current dictionary", Toast.LENGTH_SHORT).show()
         }
 
-        val passToFoodItem = intent.getStringExtra("food")
-        if(passToFoodItem != null){
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            val myFragment = see_diary()
-            val bundle = Bundle()
-            bundle.putString("id", passToFoodItem)
-            myFragment.arguments = bundle
-            fragmentTransaction.add(R.id.fragmentContainer, myFragment).commit()
-        }
+
+
     }
 
 
@@ -67,6 +58,20 @@ class DiaryActivity: AppCompatActivity() {
 
         fragmentTransaction.commit()
     }
+
+    override fun passDataCom(id: String) {
+        val bundle = Bundle()
+        bundle.putString("message", id)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val seeDiary = see_diary()
+        seeDiary.arguments = bundle
+
+        transaction.replace(R.id.fragmentContainer, seeDiary)
+        transaction.commit()
+    }
+
+
 
 
 }

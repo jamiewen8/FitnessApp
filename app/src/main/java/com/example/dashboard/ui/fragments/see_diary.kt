@@ -7,11 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dashboard.R
-import com.example.dashboard.databinding.AddFoodBinding
-import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
 import com.example.dashboard.databinding.SeeDiaryBinding
 // com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
 import com.example.dashboard.ui.viewmodels.FoodViewModel
@@ -20,6 +16,7 @@ import kotlinx.android.synthetic.main.card_view_design.view.*
 class see_diary : Fragment(R.layout.see_diary){
 
     ///private var adapter: FoodListAdapter? = null
+    var displayFood : Int? = 0
 
     private var _binding: SeeDiaryBinding? = null
     private val binding get() = _binding!!
@@ -32,18 +29,16 @@ class see_diary : Fragment(R.layout.see_diary){
     ): View? {
 
         _binding = SeeDiaryBinding.inflate(inflater, container, false)
-        return binding.root
-        val bundle = arguments
-        val value = bundle!!.getString("food")
-        if (value != null) {
-            viewModel.findFood(value.toInt())
-        }
+        displayFood = arguments?.getString("message")?.toInt()
 
+        return binding.root
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         observerSetup()
         //recyclerview()
+        displayFood?.let { viewModel.findFood(it) }
 
     }
 

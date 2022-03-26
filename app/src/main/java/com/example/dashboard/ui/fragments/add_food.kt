@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
+import com.example.dashboard.ui.Interface.Communicator
 import com.example.dashboard.ui.activities.DiaryActivity
 import com.example.dashboard.ui.activities.RewardPage
 import com.example.dashboard.ui.fragments.createfood.CreateFoodItem
@@ -24,6 +25,8 @@ class add_food : Fragment(R.layout.add_food) {
     companion object {
         fun newInstance() = CreateFoodItem()
     }
+
+    private lateinit var communicator: Communicator
 
 
     private var _binding: FragmentCreateFoodItemBinding? = null
@@ -38,14 +41,24 @@ class add_food : Fragment(R.layout.add_food) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreateFoodItemBinding.inflate(inflater, container, false)
-        return binding.root
-        barcodeCheck()
 
+        communicator = activity as Communicator
+
+        binding.btnConfirm.setOnClickListener{
+            //val food = Food(binding.name.text as String, binding.protein.text as String, binding.fat.text as String, binding.carbs.text as String, 1)
+            communicator.passDataCom(idNum.toString())
+
+        }
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        if(arguments != null)
+        {
+            barcodeCheck()
+        }
         listenerSetup()
         observerSetup()
 
@@ -58,18 +71,12 @@ class add_food : Fragment(R.layout.add_food) {
         if (value != null ) {
             viewModel.findFood(value.toInt())
         }
+
     }
 
     private fun listenerSetup(){
 
-        binding.btnConfirm.setOnClickListener{
-            val food = Food(binding.name.text as String, binding.protein.text as String, binding.fat.text as String, binding.carbs.text as String, 1)
-            viewModel.selectItem(food)
-            val bundle = Bundle()
-            bundle.putString("value", idNum.toString())
-            val seeDiary = see_diary()
 
-        }
 
         binding.something1.setOnClickListener{
             viewModel.findFood(1)

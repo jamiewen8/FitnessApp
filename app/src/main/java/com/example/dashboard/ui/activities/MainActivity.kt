@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         supportActionBar?.hide() //removing the action bar above to stop showing the name of the app
 
         loadSPData()
-        databaseSetup()
+
         if (userFirstTime) {
             userFirstTime = false
             saveSPData()
@@ -171,6 +171,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private fun startScreen(){
         if (userFirstTime) {
+            databaseSetup()
             userFirstTime = false
             saveSPData()
 

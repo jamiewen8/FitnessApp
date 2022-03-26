@@ -31,9 +31,9 @@ class FoodViewModel(application: Application): AndroidViewModel(application){
     }
 
 
-    fun selectItem(food: Food) {
-        mutableSelectedItem.value = food
-    }
+    //fun selectItem(food: Int) {
+   //     mutableSelectedItem.value = food
+   // }
 
     fun insertFood(food: Food)
     {
