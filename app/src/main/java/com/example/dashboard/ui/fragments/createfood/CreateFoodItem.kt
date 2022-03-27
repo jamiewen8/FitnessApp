@@ -13,7 +13,6 @@ import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
-import java.util.*
 
 
 class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
@@ -25,6 +24,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
     private var protein = ""
     private var fat = ""
     private var carbs = ""
+    private var barcode = 0
 
 
 
@@ -38,7 +38,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
         //Add food to database
         btn_confirm.setOnClickListener {
-            addFoodToDB()
+            addFoodToRecycler()
         }
 
         //Selected and image to put into our list
@@ -46,12 +46,12 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
     }
 
-    private fun addFoodToDB() {
+    private fun addFoodToRecycler() {
 
         drawableSelected()
 
         if (!( drawableSelected == 0)) {
-            val food = Food(0, "measurement",protein,fat,carbs, drawableSelected) //todo add foodname here
+            val food = Food(0, food_name,protein,fat,carbs, drawableSelected, barcode)
 
             //add the food if all the fields are filled
             foodViewModel.addFood(food)
@@ -70,6 +70,13 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             drawableSelected = R.drawable.ic_tea
 
 
+            barcode = 1
+
+            food_name = "Coco pops"
+            protein = "1.9"
+            fat = "0.6"
+            carbs = "25"
+            //here i can hardcode the data for the recycler view
             //de-select the other options when we pick an image
             something2.isSelected = false
             something3.isSelected = false
@@ -80,6 +87,13 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
         something2.setOnClickListener {
             something2.isSelected = !something2.isSelected
             drawableSelected = R.drawable.ic_tea
+
+            barcode = 2
+
+            food_name = "Frosties"
+            protein = "1.6"
+            fat = "0.2"
+            carbs = "30"
 
             //de-select the other options when we pick an image
             something1.isSelected = false
@@ -92,6 +106,13 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             something3.isSelected = !something3.isSelected
             drawableSelected = R.drawable.ic_tea
 
+            barcode = 3
+
+            food_name = "Crunchy nut"
+            protein = "2.5"
+            fat = "0.3"
+            carbs = "35"
+
             //de-select the other options when we pick an image
             something2.isSelected = false
             something1.isSelected = false
@@ -103,6 +124,13 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             something4.isSelected = !something4.isSelected
             drawableSelected = R.drawable.ic_tea
 
+            barcode = 4
+
+            food_name = "Lucky charms"
+            protein = "1.4"
+            fat = "0.5"
+            carbs = "45"
+
             //de-select the other options when we pick an image
             something2.isSelected = false
             something3.isSelected = false
@@ -113,6 +141,13 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
         something5.setOnClickListener {
             something5.isSelected = !something5.isSelected
             drawableSelected = R.drawable.ic_tea
+
+            barcode = 5
+
+            food_name = "Weetabix"
+            protein = "4.5"
+            fat = "0.8"
+            carbs = "26"
 
             //de-select the other options when we pick an image
             something2.isSelected = false

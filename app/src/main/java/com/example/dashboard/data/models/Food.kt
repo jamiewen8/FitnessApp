@@ -14,5 +14,6 @@ data class Food(
     val protein: String,    //todo need to change this to integer because the strings are for testing
     val fat: String,
     val carbs: String,
-    val imageId: Int)
+    val imageId: Int,
+    val barcode: Int)
     : Parcelable
