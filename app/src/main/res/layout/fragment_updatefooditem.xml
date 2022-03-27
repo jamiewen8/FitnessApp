@@ -22,7 +22,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_tea_smoking_fastfood"
+                android:id="@+id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -33,7 +33,7 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:src="@drawable/coco_pops" />
 
                 <ImageView
                     android:id="@+id/something2"
@@ -41,7 +41,7 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:src="@drawable/frosties" />
 
                 <ImageView
                     android:id="@+id/something3"
@@ -49,7 +49,7 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:src="@drawable/crunchy_nut" />
 
                 <ImageView
                     android:id="@+id/something4"
@@ -57,7 +57,7 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:src="@drawable/lucky_charms" />
 
                 <ImageView
                     android:id="@+id/something5"
@@ -65,10 +65,81 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/tea_selected" />
+                    android:rotation="-90"
+                    android:scaleType="centerInside"
+                    android:scaleX="1.4"
+                    android:scaleY="1.1"
+                    android:src="@drawable/weetabix" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_box_rounded"
+                    android:backgroundTint="@color/blue"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="P"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="0"
+                    android:inputType="number"
+                    android:id="@+id/proteinDisplay"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_box_rounded"
+                    android:backgroundTint="@color/blue"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="F"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="0"
+                    android:inputType="number"
+                    android:id="@+id/fatDisplay"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_box_rounded"
+                    android:backgroundTint="@color/blue"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="C"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="0"
+                    android:inputType="number"
+                    android:id="@+id/carbsDisplay"/>
+
+
+            </LinearLayout>
             <Button
                 android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
