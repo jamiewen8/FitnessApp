@@ -4,6 +4,7 @@ package com.example.dashboard.ui.fragments.createfood
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -67,7 +68,11 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
     private fun drawableSelected() {
         something1.setOnClickListener {
             something1.isSelected = !something1.isSelected
-            drawableSelected = R.drawable.ic_tea
+            drawableSelected = R.drawable.coco_pops
+
+            proteinDisplay.text = "1.9"
+            fatDisplay.text = "0.6"
+            carbsDisplay.text = "25"
 
 
             barcode = 1
@@ -76,7 +81,8 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             protein = "1.9"
             fat = "0.6"
             carbs = "25"
-            //here i can hardcode the data for the recycler view
+            //here i can hardcode the data for the recycler view try to link this to the db
+
             //de-select the other options when we pick an image
             something2.isSelected = false
             something3.isSelected = false
@@ -86,7 +92,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
         something2.setOnClickListener {
             something2.isSelected = !something2.isSelected
-            drawableSelected = R.drawable.ic_tea
+            drawableSelected = R.drawable.caloriehit
 
             barcode = 2
 
