@@ -83,16 +83,26 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             carbs = "25"
             //here i can hardcode the data for the recycler view try to link this to the db
 
+            something1.alpha = 1f
+
             //de-select the other options when we pick an image
             something2.isSelected = false
+            something2.alpha = 0.5f
             something3.isSelected = false
+            something3.alpha = 0.5f
             something4.isSelected = false
+            something4.alpha = 0.5f
             something5.isSelected = false
+            something5.alpha = 0.5f
         }
 
         something2.setOnClickListener {
             something2.isSelected = !something2.isSelected
-            drawableSelected = R.drawable.caloriehit
+            drawableSelected = R.drawable.frosties
+
+            proteinDisplay.text = "1.6"
+            fatDisplay.text = "0.2"
+            carbsDisplay.text = "30"
 
             barcode = 2
 
@@ -101,16 +111,26 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             fat = "0.2"
             carbs = "30"
 
+            something2.alpha = 1f
+
             //de-select the other options when we pick an image
             something1.isSelected = false
+            something1.alpha = 0.5f
             something3.isSelected = false
+            something3.alpha = 0.5f
             something4.isSelected = false
+            something4.alpha = 0.5f
             something5.isSelected = false
+            something5.alpha = 0.5f
         }
 
         something3.setOnClickListener {
             something3.isSelected = !something3.isSelected
-            drawableSelected = R.drawable.ic_tea
+            drawableSelected = R.drawable.crunchy_nut
+
+            proteinDisplay.text = "2.5"
+            fatDisplay.text = "0.3"
+            carbsDisplay.text = "35"
 
             barcode = 3
 
@@ -119,16 +139,26 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             fat = "0.3"
             carbs = "35"
 
+            something3.alpha = 1f
+
             //de-select the other options when we pick an image
             something2.isSelected = false
+            something2.alpha = 0.5f
             something1.isSelected = false
+            something1.alpha = 0.5f
             something4.isSelected = false
+            something4.alpha = 0.5f
             something5.isSelected = false
+            something5.alpha = 0.5f
         }
 
         something4.setOnClickListener {
             something4.isSelected = !something4.isSelected
-            drawableSelected = R.drawable.ic_tea
+            drawableSelected = R.drawable.lucky_charms
+
+            proteinDisplay.text = "1.4"
+            fatDisplay.text = "0.5"
+            carbsDisplay.text = "45"
 
             barcode = 4
 
@@ -137,16 +167,26 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             fat = "0.5"
             carbs = "45"
 
+            something4.alpha = 1f
+
             //de-select the other options when we pick an image
             something2.isSelected = false
+            something2.alpha = 0.5f
             something3.isSelected = false
+            something3.alpha = 0.5f
             something1.isSelected = false
+            something1.alpha = 0.5f
             something5.isSelected = false
+            something5.alpha = 0.5f
         }
 
         something5.setOnClickListener {
             something5.isSelected = !something5.isSelected
-            drawableSelected = R.drawable.ic_tea
+            drawableSelected = R.drawable.weetabix
+
+            proteinDisplay.text = "4.5"
+            fatDisplay.text = "0.8"
+            carbsDisplay.text = "26"
 
             barcode = 5
 
@@ -155,11 +195,17 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
             fat = "0.8"
             carbs = "26"
 
+            something5.alpha = 1f
+
             //de-select the other options when we pick an image
             something2.isSelected = false
+            something2.alpha = 0.5f
             something3.isSelected = false
+            something3.alpha = 0.5f
             something4.isSelected = false
+            something4.alpha = 0.5f
             something1.isSelected = false
+            something1.alpha = 0.5f
         }
 
     }
