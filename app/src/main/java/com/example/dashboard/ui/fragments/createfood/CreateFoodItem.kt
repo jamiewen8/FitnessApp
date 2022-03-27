@@ -27,7 +27,6 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
     private var carbs = ""
     private var barcode = 0
     //todo make the breakfast lunch and dinner buttons so it can display what it is for
-    //todo make sure to get the update working as well
     //todo have a search function
     //todo have a slide to delete function
     //try to then link everything to the db
