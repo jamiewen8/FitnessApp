@@ -54,8 +54,8 @@ class SecondActivity : AppCompatActivity() {
 
         codescanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                /*Sound = MediaPlayer.create(this, R.raw.dingsound)
-                Sound?.start()*/
+                Sound = MediaPlayer.create(this, R.raw.dingsound)
+                Sound?.start()
 
                 //two lines of code above to allow the device to play the dingsound when the user uses the scanner
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
