@@ -11,8 +11,9 @@ import com.example.dashboard.data.models.Food
 import com.example.dashboard.ui.fragments.foodlist.FoodListDirections
 import kotlinx.android.synthetic.main.recycler_food_item.view.*
 
-class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
+class FoodListAdapter(List: MutableList<String>) : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
 
+    private var recyclerfoodlist: MutableList<String> = List
     var foodsList = emptyList<Food>()
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,7 +34,7 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_food_item, parent,false))
     }
 
-    //todo: initialise the recycler view and set it up to show data (part2)
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentFood = foodsList[position]
         holder.itemView.iv_food_icon.setImageResource(currentFood.imageId)
@@ -41,10 +42,12 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
         holder.itemView.proteinrecycle.text = currentFood.protein.toString()
         holder.itemView.fatrecycle.text = currentFood.fat.toString()
         holder.itemView.carbsrecycle.text = currentFood.carbs.toString()
+
     }
 
     override fun getItemCount(): Int {
-        return foodsList.size
+        return foodsList.size + recyclerfoodlist.size
+
     }
 
     fun setData(food: List<Food>) {

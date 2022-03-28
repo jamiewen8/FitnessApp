@@ -40,6 +40,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
         foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
 
+
         //Add food to database
         btn_confirm.setOnClickListener {
             addFoodToRecycler()
