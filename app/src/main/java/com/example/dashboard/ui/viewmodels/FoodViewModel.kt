@@ -3,6 +3,7 @@ package com.example.dashboard.ui.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.dashboard.data.models.Food
 import com.example.dashboard.data.database.FoodDatabase
@@ -14,6 +15,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: FoodRepository
     val getAllFoods: LiveData<List<Food>>
+    
 
 
     init {
@@ -46,6 +48,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
             repository.deleteAllFoods()
         }
     }
+
 
 
 

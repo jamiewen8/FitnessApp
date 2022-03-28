@@ -20,6 +20,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.widget.Button
 import android.widget.SeekBar
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
@@ -42,12 +43,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     // making sure that running is off and that the sensor is checked
     //api >29 must include the permissions
 
+
+
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
 
     //water intake animations
     private var water_intake : WaterIntake? = null
     private var seek_bar : SeekBar? = null
+    private var waterProgress = 0
 
     //to see if this is the user's first time using the app if it is then it will show the intro screen
     private var userFirstTime = true
@@ -136,6 +140,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val rewardspage = findViewById<CardView>(R.id.rewardspage)
         rewardspage.setOnClickListener{
             val intent = Intent(this, RewardPage::class.java)
+            var currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
+            intent.putExtra("steps", currentSteps.toString())
+            intent.putExtra("water", waterProgress.toString())
             startActivity(intent)
         }
 
@@ -358,19 +365,20 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private fun initWaterIntake() {
         water_intake = findViewById(R.id.water_animation)
-        seek_bar = findViewById(R.id.seek_bar)
-        seek_bar!!.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                water_intake!!.setProgress(progress.toFloat())
-            }
+        var waterButton = findViewById(R.id.waterAdd) as Button
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+        waterButton.setOnClickListener {
+            waterProgress += 5
+            Toast.makeText(this, "Added 100ml", Toast.LENGTH_SHORT).show()
+            water_intake!!.setProgress(waterProgress.toFloat())
+        }
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        waterButton.setOnLongClickListener {
+            waterProgress = 0
+            water_intake!!.setProgress(waterProgress.toFloat())
+            true
+        }
 
-        })
     }
-
-
 
 }

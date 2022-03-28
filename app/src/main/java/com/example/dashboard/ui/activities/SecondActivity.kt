@@ -10,12 +10,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
 import com.example.dashboard.R
+import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 
 //private const val CAMERA_REQUEST_CODE = 101
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var codescanner: CodeScanner
+
+    val viewModel: FoodViewModel by viewModels()
 
 
     private var Sound:MediaPlayer? = null
@@ -79,7 +82,7 @@ class SecondActivity : AppCompatActivity() {
 
     }
 
-   /* private fun observerSetup() {
+    /*private fun observerSetup() {
         viewModel.getSearchResults().observe(this) { foods ->
             foods?.let {
                 if (it.isNotEmpty()) {
