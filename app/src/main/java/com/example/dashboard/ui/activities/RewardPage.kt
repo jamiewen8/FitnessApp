@@ -20,9 +20,19 @@ class RewardPage : AppCompatActivity() {
         val sharebtn = findViewById<Button>(R.id.btn_share)
         val sharingImage = findViewById<ImageView>(R.id.waterreward)
         val sharingImage2 = findViewById<ImageView>(R.id.dailystep)
-        val sharingImage3 = findViewById<ImageView>(R.id.caloriehit)
 
+        val steps = intent.getStringExtra("steps")
+        val waterProgress = intent.getStringExtra("water")
+        sharingImage.alpha = 0.5f
+        sharingImage2.alpha = 0.5f
 
+        if(steps?.toInt()!! >= 10){
+            sharingImage2.alpha = 1f
+        }
+        if(waterProgress?.toInt()!! >= 100)
+        {
+            sharingImage.alpha = 1f
+        }
         sharebtn.setOnClickListener {
 
 
