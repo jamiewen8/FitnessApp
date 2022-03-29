@@ -20,6 +20,9 @@ interface FoodDao {
     @Query("SELECT * FROM food_table ORDER BY id DESC")
     fun getAllFoods(): LiveData<List<Food>>
 
+    @Query("SELECT * FROM food_table ORDER BY barcode DESC")
+    fun searchFood(): LiveData<List<Food>>
+
     @Query("DELETE FROM food_table")
     suspend fun deleteAll()
 

@@ -15,6 +15,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: FoodRepository
     val getAllFoods: LiveData<List<Food>>
+    val searchFood: LiveData<List<Food>>
     
 
 
@@ -23,6 +24,7 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
         repository = FoodRepository(foodDao)
 
         getAllFoods = repository.getAllFoods
+        searchFood = repository.searchFood
     }
 
     fun addFood(food: Food) {
@@ -48,6 +50,8 @@ class FoodViewModel(application: Application) : AndroidViewModel(application) {
             repository.deleteAllFoods()
         }
     }
+
+
 
 
 

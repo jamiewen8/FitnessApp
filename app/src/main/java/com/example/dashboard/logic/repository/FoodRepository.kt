@@ -6,6 +6,7 @@ import com.example.dashboard.logic.dao.FoodDao
 
 class FoodRepository(private val foodDao: FoodDao) {
     val getAllFoods: LiveData<List<Food>> = foodDao.getAllFoods()
+    val searchFood: LiveData<List<Food>> = foodDao.getAllFoods()
 
     suspend fun addFood(food: Food) {
         foodDao.addFood(food)

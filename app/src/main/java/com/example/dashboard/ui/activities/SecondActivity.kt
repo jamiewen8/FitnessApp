@@ -1,5 +1,6 @@
 package com.example.dashboard.ui.activities
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -8,14 +9,19 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.budiyev.android.codescanner.*
 import com.example.dashboard.R
+import com.example.dashboard.data.models.Food
+import com.example.dashboard.ui.fragments.createfood.CreateFoodItem
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 
 
 //private const val CAMERA_REQUEST_CODE = 101
 
 class SecondActivity : AppCompatActivity() {
+
+    private lateinit var foodViewModel: FoodViewModel
     private lateinit var codescanner: CodeScanner
 
     val viewModel: FoodViewModel by viewModels()
@@ -24,13 +30,17 @@ class SecondActivity : AppCompatActivity() {
     private var Sound:MediaPlayer? = null
 
 
+    private var barcode = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scanner)
 
+        databaseSetup()
 
 
+        foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)==
             PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 123)
@@ -42,6 +52,7 @@ class SecondActivity : AppCompatActivity() {
 
 
     private fun startScanning() {
+
         val scannerView: CodeScannerView = findViewById(R.id.scanner_view)
         codescanner = CodeScanner(this, scannerView)
         codescanner.camera = CodeScanner.CAMERA_BACK
@@ -59,11 +70,19 @@ class SecondActivity : AppCompatActivity() {
 
                 //two lines of code above to allow the device to play the dingsound when the user uses the scanner
                 Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_SHORT).show()
+                observerSetup()
+
+                /*val result = it.toString()
+                barcode = result.toInt()*/
+
+
                 //use this result to display the text and in turn use the text to identify the item to add to the diary
 
                 //val intent = Intent(this, ScannerToCreateFood::class.java)
                 //startActivity(intent)
-
+                /*val intent = Intent(this, FoodDiary::class.java)
+                intent.putExtra("barcode", it.text)
+                startActivity(intent)*/
             }
         }
 
@@ -82,16 +101,7 @@ class SecondActivity : AppCompatActivity() {
 
     }
 
-    /*private fun observerSetup() {
-        viewModel.getSearchResults().observe(this) { foods ->
-            foods?.let {
-                if (it.isNotEmpty()) {
-                    Toast.makeText(this, "Item is: ${it[0].food_name}", Toast.LENGTH_SHORT).show()
 
-                }
-            }
-        }
-    }*/
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -119,6 +129,37 @@ class SecondActivity : AppCompatActivity() {
         }
         super.onPause()
 
+    }
+    fun databaseSetup() {
+        //Add food to database
+        val name =
+            arrayListOf<String>("Coco pops", "Frosties", "Crunchy nut", "Lucky charms", "Weetabix")
+        val protein = arrayListOf<String>("1.9", "1.6", "2.5", "1.4", "4.5")
+        val fat = arrayListOf<String>("0.6", "0.2", "0.3", "0.5", "0.8")
+        val carbs = arrayListOf<String>("25", "30", "35", "45", "26")
+        val drawableSelected = arrayListOf<Int>(1, 2, 3, 4, 5)
+        val barcode = arrayListOf<Int>(0, 1, 2, 3, 4)
+        for (i in 0 until name.size) {
+            val food =
+                Food(0, name[i], protein[i], fat[i], carbs[i], drawableSelected[i], barcode[i], "")
+            viewModel.addFood(food)
+        }
+    }
+    private fun observerSetup() {
+        viewModel.searchFood.observe(this) { foods ->
+            foods?.let {
+                if (it.isNotEmpty()) {
+                    Toast.makeText(this, "Item is: ${it[0].food_name}", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        foodViewModel.deleteAllFoods()
+        //to test the barcode scanner only to improve on this connect to an online firebase
     }
 
 

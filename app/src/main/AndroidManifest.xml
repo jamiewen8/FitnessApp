@@ -32,6 +32,7 @@
         <activity android:name=".ui.activities.RewardPage"></activity>
         <activity android:name=".ui.introscreen.IntroActivity"></activity>
 
+
     </application>
 
 </manifest>
