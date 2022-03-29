@@ -42,6 +42,14 @@ class CreateFoodItem : Fragment() {
 
     private lateinit var foodViewModel: FoodViewModel
 
+
+    override fun onResume() {
+        super.onResume()
+        val options = resources.getStringArray(R.array.foodtime)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, options)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,9 +57,6 @@ class CreateFoodItem : Fragment() {
 
         _binding = FragmentCreateFoodItemBinding.inflate(inflater, container, false)
 
-        val options = resources.getStringArray(R.array.foodtime)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, options)
-        binding.autoCompleteTextView.setAdapter(arrayAdapter)
 
 
         return binding.root
