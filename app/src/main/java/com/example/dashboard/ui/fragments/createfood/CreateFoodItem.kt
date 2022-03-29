@@ -3,21 +3,29 @@ package com.example.dashboard.ui.fragments.createfood
 
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
+import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
 
 
-class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
+class CreateFoodItem : Fragment() {
 
+
+    private var _binding: FragmentCreateFoodItemBinding? = null
+    private val binding get() = _binding!!
 
 
     private var drawableSelected = 0
@@ -33,6 +41,26 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
 
 
     private lateinit var foodViewModel: FoodViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View{
+
+        _binding = FragmentCreateFoodItemBinding.inflate(inflater, container, false)
+
+        val options = resources.getStringArray(R.array.foodtime)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, options)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
+
+
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -50,6 +78,7 @@ class CreateFoodItem : Fragment(R.layout.fragment_create_food_item) {
         drawableSelected()
 
     }
+
 
     private fun addFoodToRecycler() {
 

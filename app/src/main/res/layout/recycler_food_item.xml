@@ -73,6 +73,8 @@
                     android:id="@+id/proteinrecycle"
                     android:text="19.5 gr" />
 
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,11 +115,9 @@
 
                     android:text="32 gr" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginVertical="4dp"
-                    android:background="@android:color/black" />
+
+
+
             </LinearLayout>
 
 
