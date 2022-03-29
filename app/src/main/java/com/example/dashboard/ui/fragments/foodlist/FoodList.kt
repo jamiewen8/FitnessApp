@@ -7,7 +7,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
+import com.example.dashboard.ui.animations.startAnimation
 import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_food_list.*
@@ -35,6 +39,11 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val animation = AnimationUtils.loadAnimation(this.context, R.anim.circle_explosion_anim).apply {
+            duration = 700
+            interpolator = AccelerateDecelerateInterpolator()
+        }
+
         adapter = FoodListAdapter(List)
         rv_foods.adapter = adapter
         rv_foods.layoutManager = LinearLayoutManager(context)
@@ -45,7 +54,11 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
         displayList.addAll(listOf(adapter.toString()))
 
         fab_add.setOnClickListener {
+            fab_add.isVisible = false
+            circle.isVisible = true
+            circle.startAnimation(animation) {
             findNavController().navigate(R.id.action_foodList_to_createFoodItem)
+                circle.isVisible = false}
         }
 
         //Show the options menu in this fragment
@@ -55,6 +68,8 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
             adapter.setData(foodList)
             swipeToRefresh.isRefreshing = false
         }
+
+
     }
 
     private fun viewModels() {
