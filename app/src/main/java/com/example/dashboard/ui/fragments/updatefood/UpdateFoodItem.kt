@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
@@ -13,12 +14,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
+import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
 import kotlinx.android.synthetic.main.fragment_updatefooditem.*
 
 
 class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
+
+    private var _binding: FragmentCreateFoodItemBinding? = null
+    private val binding get() = _binding!!
 
     private val args by navArgs<UpdateFoodItemArgs>()
 
@@ -29,8 +34,9 @@ class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
     private var fat = ""
     private var carbs = ""
     private var barcode = 0
-    //todo make the breakfast lunch and dinner buttons so it can display what it is for
-    //todo make sure to get the update working as well
+    private var foodtimeadapter = ""
+
+
     //todo have a search function
     //todo have a slide to delete function
     //try to then link everything to the db
@@ -38,15 +44,38 @@ class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
 
     private lateinit var foodViewModel: FoodViewModel
 
+    override fun onResume() {
+        super.onResume()
+        val options = arrayOf("Breakfast", "Lunch", "Dinner")
+        val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.select_dialog_item,options)
+
+        autoCompleteTextViewUpdate.setAdapter(arrayAdapter)
+
+
+        autoCompleteTextViewUpdate.setOnItemClickListener{parent, view, position, id->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            Toast.makeText(requireContext(), "You Selected " + selectedItem, Toast.LENGTH_SHORT).show()
+            foodtimeadapter = selectedItem
+        }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
 
+
         proteinDisplayUpdate.setText(args.selectedFood.protein)
         fatDisplayUpdate.setText(args.selectedFood.fat)
         carbsDisplayUpdate.setText(args.selectedFood.carbs)
+        autoCompleteTextViewUpdate.setText(args.selectedFood.foodtime)
 
 
         //Add food to database
@@ -64,7 +93,7 @@ class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
         drawableSelected()
 
         if (!( drawableSelected == 0)) {
-            val food = Food(args.selectedFood.id, food_name,protein,fat,carbs, drawableSelected, barcode, "Breakfast")
+            val food = Food(args.selectedFood.id, food_name,protein,fat,carbs, drawableSelected, barcode, foodtimeadapter)
 
             //add the food if all the fields are filled
             foodViewModel.updateFood(food)
@@ -221,6 +250,21 @@ class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
         }
 
     }
+
+    /*private fun argumentpicture(){
+        val picture = args.selectedFood.imageId
+        when(picture){
+            1 -> drawableSelected = R.drawable.coco_pops
+            2 -> drawableSelected = R.drawable.frosties
+            3 -> drawableSelected = R.drawable.crunchy_nut
+            4 -> drawableSelected = R.drawable.lucky_charms
+            5 -> drawableSelected = R.drawable.weetabix
+
+        }
+    }*/
+
+
+
 
 
 
