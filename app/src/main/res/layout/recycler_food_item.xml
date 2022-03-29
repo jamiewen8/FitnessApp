@@ -25,6 +25,14 @@
             android:layout_margin="10dp"
             android:src="@drawable/ic_tea" />
 
+        <TextView
+            android:id="@+id/foodtime"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_margin="11dp"
+            android:text="breakfast"/>
+
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -72,6 +80,7 @@
                     android:layout_marginStart="2dp"
                     android:id="@+id/proteinrecycle"
                     android:text="19.5 gr" />
+
 
 
 

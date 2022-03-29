@@ -42,6 +42,7 @@ class FoodListAdapter(List: MutableList<String>) : RecyclerView.Adapter<FoodList
         holder.itemView.proteinrecycle.text = currentFood.protein.toString()
         holder.itemView.fatrecycle.text = currentFood.fat.toString()
         holder.itemView.carbsrecycle.text = currentFood.carbs.toString()
+        holder.itemView.foodtime.text = currentFood.foodtime.toString()
 
     }
 

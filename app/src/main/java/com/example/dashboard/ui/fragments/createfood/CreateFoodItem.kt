@@ -19,6 +19,7 @@ import com.example.dashboard.data.models.Food
 import com.example.dashboard.databinding.FragmentCreateFoodItemBinding
 import com.example.dashboard.ui.viewmodels.FoodViewModel
 import kotlinx.android.synthetic.main.fragment_create_food_item.*
+import kotlinx.android.synthetic.main.recycler_food_item.*
 
 
 class CreateFoodItem : Fragment() {
@@ -34,6 +35,7 @@ class CreateFoodItem : Fragment() {
     private var fat = ""
     private var carbs = ""
     private var barcode = 0
+    private var foodtimeadapter = ""
     //todo make the breakfast lunch and dinner buttons so it can display what it is for
     //todo have a search function
     //todo have a slide to delete function
@@ -45,9 +47,20 @@ class CreateFoodItem : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val options = resources.getStringArray(R.array.foodtime)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, options)
-        binding.autoCompleteTextView.setAdapter(arrayAdapter)
+        //val options = resources.getStringArray(R.array.foodtime)
+        val options = arrayOf("Breakfast", "Lunch", "Dinner")
+        val arrayAdapter = ArrayAdapter<String>(requireContext(), android.R.layout.select_dialog_item,options)
+
+        //val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, options)
+        autoCompleteTextView.setAdapter(arrayAdapter)
+
+        //foodtimeadapter = binding.autoCompleteTextView.text.toString()
+
+        autoCompleteTextView.setOnItemClickListener{parent, view, position, id->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            Toast.makeText(requireContext(), "You Selected " + selectedItem, Toast.LENGTH_SHORT).show()
+            foodtimeadapter = selectedItem
+        }
     }
 
     override fun onCreateView(
@@ -90,7 +103,9 @@ class CreateFoodItem : Fragment() {
         drawableSelected()
 
         if (!( drawableSelected == 0)) {
-            val food = Food(0, food_name,protein,fat,carbs, drawableSelected, barcode)
+            val food = Food(0, food_name,protein,fat,carbs, drawableSelected, barcode, foodtimeadapter)
+
+
 
             //add the food if all the fields are filled
             foodViewModel.addFood(food)

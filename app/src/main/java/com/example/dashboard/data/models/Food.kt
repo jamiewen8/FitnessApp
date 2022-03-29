@@ -15,5 +15,6 @@ data class Food(
     val fat: String,
     val carbs: String,
     val imageId: Int,
-    val barcode: Int)
+    val barcode: Int,
+    val foodtime: String)
     : Parcelable

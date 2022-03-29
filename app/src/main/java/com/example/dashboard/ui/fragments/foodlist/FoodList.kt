@@ -26,6 +26,9 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
     private lateinit var foodViewModel: FoodViewModel
     private lateinit var adapter: FoodListAdapter
 
+
+    private lateinit var deletedfood: String
+
     private var List = mutableListOf<String>()
     private var displayList = mutableListOf<String>()
 
@@ -38,6 +41,8 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
 
         //Instantiate and create viewmodel observers
         viewModels()
+
+        displayList.addAll(listOf(adapter.toString()))
 
         fab_add.setOnClickListener {
             findNavController().navigate(R.id.action_foodList_to_createFoodItem)
@@ -59,18 +64,23 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
             adapter.setData(it)
             foodList = it
 
+            //displayList.addAll(listOf(it.toString()))
+
             if (it.isEmpty()) {
                 rv_foods.visibility = View.GONE
                 tv_emptyView.visibility = View.VISIBLE
             } else {
                 rv_foods.visibility = View.VISIBLE
                 tv_emptyView.visibility = View.GONE
+
+                //here it is to show add food if the list is empty
             }
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.nav_menu, menu)
+
 
         var item: MenuItem = menu!!.findItem(R.id.action_search)
 
@@ -81,7 +91,7 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return true
                 }
-//todo get the food list into the display list or something idk
+
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText!!.isNotEmpty()) {
                         displayList.clear()
@@ -119,5 +129,7 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
 }
