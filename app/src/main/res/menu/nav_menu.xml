@@ -12,5 +12,10 @@
         android:title="Search"
         app:showAsAction="always|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:showAsAction="always" />
 
 </menu>

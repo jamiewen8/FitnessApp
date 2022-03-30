@@ -6,6 +6,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import com.example.dashboard.R
@@ -66,5 +68,19 @@ class RewardPage : AppCompatActivity() {
 
         }
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_home,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this, MainActivity::class.java)
+
+        when (item.itemId){
+            R.id.action_home -> startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

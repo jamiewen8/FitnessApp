@@ -1,6 +1,10 @@
 package com.example.dashboard.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.*
@@ -13,7 +17,7 @@ class BMI : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bmi)
-        supportActionBar?.hide()
+        supportActionBar?.show()
 
         var man = 0
         var woman = 0
@@ -112,5 +116,19 @@ class BMI : AppCompatActivity() {
         return bmiStatus
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_home,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this, MainActivity::class.java)
+
+        when (item.itemId){
+            R.id.action_home -> startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

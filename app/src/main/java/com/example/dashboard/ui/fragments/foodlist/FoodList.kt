@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dashboard.R
 import com.example.dashboard.data.models.Food
+import com.example.dashboard.ui.activities.BMI
+import com.example.dashboard.ui.activities.MainActivity
 import com.example.dashboard.ui.animations.startAnimation
 import com.example.dashboard.ui.fragments.foodlist.adapters.FoodListAdapter
 import com.example.dashboard.ui.viewmodels.FoodViewModel
@@ -139,8 +141,12 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this.context, MainActivity::class.java)
         when (item.itemId) {
             R.id.nav_delete -> foodViewModel.deleteAllFoods()
+        }
+        when (item.itemId){
+            R.id.action_home -> startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }

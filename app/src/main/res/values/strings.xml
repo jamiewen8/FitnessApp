@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dashboard</string>
+    <string name="app_name">Fitify</string>
     <string name="bmi_calculator">BMI Calculator</string>
     <string name="male">Male</string>
     <string name="weight_kg">Weight (kg)</string>
