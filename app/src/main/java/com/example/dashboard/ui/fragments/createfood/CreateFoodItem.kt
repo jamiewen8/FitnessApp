@@ -36,10 +36,7 @@ class CreateFoodItem : Fragment() {
     private var carbs = ""
     private var barcode = 0
     private var foodtimeadapter = ""
-    //todo make the breakfast lunch and dinner buttons so it can display what it is for
-    //todo have a search function
-    //todo have a slide to delete function
-    //try to then link everything to the db
+
 
 
     private lateinit var foodViewModel: FoodViewModel

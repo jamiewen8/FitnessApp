@@ -10,37 +10,43 @@
         android:id="@+id/app_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="96dp"
         android:text="@string/bmi_calculator"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/maleicon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/app_heading"
-        android:layout_marginStart="32dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/male" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_heading">
 
-    <ImageView
-        android:id="@+id/femaleicon"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/app_heading"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="32dp"
-        android:alpha="1"
-        android:scaleType="fitXY"
-        android:src="@drawable/female" />
+        <ImageView
+            android:id="@+id/maleicon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/male" />
+
+        <ImageView
+            android:id="@+id/femaleicon"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/app_heading"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="32dp"
+            android:alpha="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/female" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/weight_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/maleicon"
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:text="@string/weight_kg"
@@ -51,7 +57,6 @@
         android:id="@+id/age_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/maleicon"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
@@ -63,7 +68,7 @@
         android:id="@+id/height_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/femaleicon"
+
         android:layout_alignParentEnd="true"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
@@ -122,7 +127,7 @@
         android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:cornerRadius="8dp"
-        app:layout_constraintBottom_toTopOf="parent" />
+         />
 
     <LinearLayout
         android:id="@+id/bmiView"

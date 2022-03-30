@@ -37,9 +37,7 @@ class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
     private var foodtimeadapter = ""
 
 
-    //todo have a search function
-    //todo have a slide to delete function
-    //try to then link everything to the db
+
 
 
     private lateinit var foodViewModel: FoodViewModel
