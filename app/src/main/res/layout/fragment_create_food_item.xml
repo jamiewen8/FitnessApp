@@ -20,7 +20,6 @@
             android:orientation="vertical">
 
 
-
             <LinearLayout
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
@@ -72,10 +71,10 @@
                     android:src="@drawable/weetabix" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
 
 
                 <TextView
@@ -91,12 +90,12 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/proteinDisplay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="0"
                     android:inputType="number"
-                    android:id="@+id/proteinDisplay"/>
+                    android:text="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -111,12 +110,12 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fatDisplay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="0"
                     android:inputType="number"
-                    android:id="@+id/fatDisplay"/>
+                    android:text="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,15 +130,16 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/carbsDisplay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:text="0"
                     android:inputType="number"
-                    android:id="@+id/carbsDisplay"/>
+                    android:text="0" />
 
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/btn_pickDate"
                 android:layout_width="match_parent"
@@ -151,6 +151,7 @@
                 android:focusable="true"
                 android:text="Pick a date"
                 android:textColor="@android:color/white" />
+
             <TextView
                 android:id="@+id/tv_dateSelected"
                 android:layout_width="match_parent"
@@ -160,18 +161,17 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/autoCompleteTextView"
                     android:layout_weight="3"
                     android:inputType="none"
-                    android:text="Breakfast, Lunch or Dinner?"/>
-
+                    android:text="Breakfast, Lunch or Dinner?" />
 
 
             </com.google.android.material.textfield.TextInputLayout>

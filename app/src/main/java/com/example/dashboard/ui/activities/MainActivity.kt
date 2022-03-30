@@ -381,4 +381,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
+    //this is to make sure that when the user swaps the layout to portrait to horizontal or back the water progress will not change
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val waterNumber = waterProgress
+        outState.putInt("savedWaterProgress", waterProgress)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val waterNumberInt = savedInstanceState.getInt("savedWaterProgress",0)
+        waterProgress = waterNumberInt
+        water_intake!!.setProgress(waterProgress.toFloat())
+
+
+    }
+
 }
