@@ -92,7 +92,7 @@ class UpdateFoodItem : Fragment(R.layout.fragment_updatefooditem) {
 
         drawableSelected()
 
-        if (!( drawableSelected == 0)) {
+        if (!( drawableSelected == 0) || (foodtimeadapter.isNotEmpty())) {
             val food = Food(args.selectedFood.id, food_name,protein,fat,carbs, drawableSelected, barcode, foodtimeadapter)
 
             //add the food if all the fields are filled

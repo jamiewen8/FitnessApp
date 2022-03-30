@@ -13,14 +13,16 @@ import kotlinx.android.synthetic.main.recycler_food_item.view.*
 
 class FoodListAdapter(List: MutableList<String>) : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
 
-    private var recyclerfoodlist: MutableList<String> = List
+
+
+    private var recyclerfoodlist: MutableList<String> = List as MutableList<String>
     var foodsList = emptyList<Food>()
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
             itemView.cv_cardView.setOnClickListener {
-                val position = adapterPosition
+                val position: Int = adapterPosition
                 Log.d("FoodsListAdapter", "Item clicked at: $position")
 
                 val action =
@@ -55,6 +57,8 @@ class FoodListAdapter(List: MutableList<String>) : RecyclerView.Adapter<FoodList
         this.foodsList = food
         notifyDataSetChanged()
     }
+
+
 
 
 }

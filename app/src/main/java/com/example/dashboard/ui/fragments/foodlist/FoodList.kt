@@ -52,7 +52,7 @@ class FoodList : Fragment(R.layout.fragment_food_list) {
         viewModels()
 
         displayList.addAll(listOf(adapter.toString()))
-
+        //animation of the adding of the food
         fab_add.setOnClickListener {
             fab_add.isVisible = false
             circle.isVisible = true

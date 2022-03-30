@@ -3,6 +3,7 @@
     <string name="bmi_calculator">BMI Calculator</string>
     <string name="male">Male</string>
     <string name="weight_kg">Weight (kg)</string>
+    <string name="age">Age</string>
     <string name="height_cm">Height (cm)</string>
     <string name="_00">00</string>
     <string name="calculate_your_bmi">Calculate your BMI</string>

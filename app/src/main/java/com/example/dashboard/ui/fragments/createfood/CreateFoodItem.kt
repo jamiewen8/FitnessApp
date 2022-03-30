@@ -102,7 +102,7 @@ class CreateFoodItem : Fragment() {
 
         drawableSelected()
 
-        if (!( drawableSelected == 0)) {
+        if (!( drawableSelected == 0) || (foodtimeadapter.isNotEmpty())) {
             val food = Food(0, food_name,protein,fat,carbs, drawableSelected, barcode, foodtimeadapter)
 
 
