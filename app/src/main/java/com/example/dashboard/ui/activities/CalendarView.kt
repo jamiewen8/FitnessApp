@@ -1,13 +1,14 @@
 package com.example.dashboard.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
 import com.example.dashboard.R
+import com.example.dashboard.ui.activities.adapters.CalendarAdapter
 import kotlinx.android.synthetic.main.calendar.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,26 +38,14 @@ class CalendarView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calendar)
 
-        /**
-         * Adding SnapHelper here, but it is not needed. I add it just to looks better.
-         */
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(calendar_recycler_view)
 
-        /**
-         * This is the maximum month that the calendar will display.
-         * I set it for 6 months, but you can increase or decrease as much you want.
-         */
+
         lastDayInCalendar.add(Calendar.MONTH, 6)
 
         setUpCalendar()
 
-        /**
-         * Go to the previous month. First, make sure the current month (cal)
-         * is after the current date so that you can't go before the current month.
-         * Then subtract  one month from the sludge. Finally, ask if cal is equal to the current date.
-         * If so, then you don't want to give @param changeMonth, otherwise changeMonth as cal.
-         */
         calendar_prev_button!!.setOnClickListener {
             if (cal.after(currentDate)) {
                 cal.add(Calendar.MONTH, -1)
@@ -66,12 +55,6 @@ class CalendarView : AppCompatActivity() {
                     setUpCalendar(changeMonth = cal)
             }
         }
-
-        /**
-         * Go to the next month. First check if the current month (cal) is before lastDayInCalendar,
-         * so that you can't go after the last possible month. Then add one month to cal.
-         * Then put @param changeMonth.
-         */
         calendar_next_button!!.setOnClickListener {
             if (cal.before(lastDayInCalendar)) {
                 cal.add(Calendar.MONTH, 1)
@@ -80,19 +63,12 @@ class CalendarView : AppCompatActivity() {
         }
     }
 
-    /**
-     * @param changeMonth I am using it only if next or previous month is not the current month
-     */
     private fun setUpCalendar(changeMonth: Calendar? = null) {
         txt_current_month!!.text = sdf.format(cal.time)
         val monthCalendar = cal.clone() as Calendar
         val maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
 
-        /**
-         *
-         * If changeMonth is not null, then I will take the day, month, and year from it,
-         * otherwise set the selected date as the current date.
-         */
+
         selectedDay =
             when {
                 changeMonth != null -> changeMonth.getActualMinimum(Calendar.DAY_OF_MONTH)
@@ -113,10 +89,7 @@ class CalendarView : AppCompatActivity() {
         dates.clear()
         monthCalendar.set(Calendar.DAY_OF_MONTH, 1)
 
-        /**
-         * Fill dates with days and set currentPosition.
-         * currentPosition is the position of first selected day.
-         */
+
         while (dates.size < maxDaysInMonth) {
             // get position of selected day
             if (monthCalendar[Calendar.DAY_OF_MONTH] == selectedDay)
@@ -131,10 +104,7 @@ class CalendarView : AppCompatActivity() {
         val calendarAdapter = CalendarAdapter(this, dates, currentDate, changeMonth)
         calendar_recycler_view!!.adapter = calendarAdapter
 
-        /**
-         * If you start the application, it centers the current day, but only if the current day
-         * is not one of the first (1, 2, 3) or one of the last (29, 30, 31).
-         */
+
         when {
             currentPosition > 2 -> calendar_recycler_view!!.scrollToPosition(currentPosition - 3)
             maxDaysInMonth - currentPosition < 2 -> calendar_recycler_view!!.scrollToPosition(currentPosition)
@@ -142,10 +112,6 @@ class CalendarView : AppCompatActivity() {
         }
 
 
-        /**
-         * After calling up the OnClickListener, the text of the current month and year is changed.
-         * Then change the selected day.
-         */
         calendarAdapter.setOnItemClickListener(object : CalendarAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val clickCalendar = Calendar.getInstance()
@@ -153,5 +119,19 @@ class CalendarView : AppCompatActivity() {
                 selectedDay = clickCalendar[Calendar.DAY_OF_MONTH]
             }
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_home,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this, MainActivity::class.java)
+
+        when (item.itemId){
+            R.id.action_home -> startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

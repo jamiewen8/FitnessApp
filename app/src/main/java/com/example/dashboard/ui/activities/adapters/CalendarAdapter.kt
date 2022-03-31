@@ -1,13 +1,12 @@
-package com.example.dashboard.ui.activities
+package com.example.dashboard.ui.activities.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dashboard.R
@@ -51,21 +50,17 @@ class CalendarAdapter(private val context: Context,
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss", Locale.ENGLISH)
         val cal = Calendar.getInstance()
         cal.time = data[position]
 
-        /**
-         * Set the year, month and day that is gonna be displayed
-         */
+
         val displayMonth = cal[Calendar.MONTH]
         val displayYear= cal[Calendar.YEAR]
         val displayDay = cal[Calendar.DAY_OF_MONTH]
 
-        /**
-         * Set text to txtDayInWeek and txtDay.
-         */
+
         try {
             val dayInWeek = sdf.parse(cal.time.toString())!!
             sdf.applyPattern("EEE")
@@ -75,20 +70,10 @@ class CalendarAdapter(private val context: Context,
         }
         holder.txtDay!!.text = cal[Calendar.DAY_OF_MONTH].toString()
 
-        /**
-         * I think you can use "cal.after (currentDate)" and "cal == currentDate",
-         * but it didn't work properly for me, so I used this longer version. Here I just ask
-         * if the displayed date is after the current date or if it is current date, if so,
-         * then you enable the item and it is possible to click on it, otherwise deactivate it.
-         * The selectCurrentDate value is valid only at the beginning, it will be the current
-         * day or the first day, for example when starting the application or changing the month.
-         */
         if (displayYear >= currentYear)
             if (displayMonth >= currentMonth || displayYear > currentYear)
                 if (displayDay >= currentDay || displayMonth > currentMonth || displayYear > currentYear) {
-                    /**
-                     * Invoke OnClickListener and make the item selected.
-                     */
+
                     holder.linearLayout!!.setOnClickListener {
                         index = position
                         selectCurrentDate = false
@@ -118,9 +103,7 @@ class CalendarAdapter(private val context: Context,
         var linearLayout = itemView.calendar_linear_layout
     }
 
-    /**
-     * OnClickListener.
-     */
+
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
@@ -129,29 +112,22 @@ class CalendarAdapter(private val context: Context,
         mListener = listener
     }
 
-    /**
-     * This make the item disabled.
-     */
+
     private fun makeItemDisabled(holder: ViewHolder) {
-        holder.txtDay!!.setTextColor(ContextCompat.getColor(context, R.color.blue))
-        holder.txtDayInWeek!!.setTextColor(ContextCompat.getColor(context, R.color.blue))
+        holder.txtDay!!.setTextColor(ContextCompat.getColor(context, R.color.red))
+        holder.txtDayInWeek!!.setTextColor(ContextCompat.getColor(context, R.color.red))
         holder.linearLayout!!.setBackgroundColor(Color.WHITE)
         holder.linearLayout!!.isEnabled = false
     }
 
-    /**
-     * This make the item selected.
-     */
+
     private fun makeItemSelected(holder: ViewHolder) {
         holder.txtDay!!.setTextColor(Color.parseColor("#FFFFFF"))
         holder.txtDayInWeek!!.setTextColor(Color.parseColor("#FFFFFF"))
-        holder.linearLayout!!.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
+        holder.linearLayout!!.setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
         holder.linearLayout!!.isEnabled = false
     }
 
-    /**
-     * This make the item default.
-     */
     private fun makeItemDefault(holder: ViewHolder) {
         holder.txtDay!!.setTextColor(Color.BLACK)
         holder.txtDayInWeek!!.setTextColor(Color.BLACK)
