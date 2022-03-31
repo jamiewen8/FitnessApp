@@ -116,6 +116,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             val intent = Intent(this, FoodDiary::class.java)
             startActivity(intent)
         }
+        val calendar = findViewById<TextView>(R.id.MyDashboard)
+        calendar.setOnClickListener{
+            val intent = Intent(this, CalendarView::class.java)
+            startActivity(intent)
+        }
+
+
 
 
         /*val fooddiary = findViewById<CardView>(R.id.fooddiary)

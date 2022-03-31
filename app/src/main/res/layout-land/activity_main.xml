@@ -16,10 +16,11 @@
 
 
         <TextView
+            android:id="@+id/MyDashboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="My Dashboard"
+            android:text="Show My Calendar"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
